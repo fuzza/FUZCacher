@@ -1,0 +1,497 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6F736A9E1B58370A00335122 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F736A9D1B58370A00335122 /* main.m */; };
+		6F736AA11B58370A00335122 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F736AA01B58370A00335122 /* AppDelegate.m */; };
+		6F736AA41B58370A00335122 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F736AA31B58370A00335122 /* ViewController.m */; };
+		6F736AA71B58370A00335122 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F736AA51B58370A00335122 /* Main.storyboard */; };
+		6F736AA91B58370A00335122 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F736AA81B58370A00335122 /* Images.xcassets */; };
+		6F736AAC1B58370A00335122 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F736AAA1B58370A00335122 /* LaunchScreen.xib */; };
+		6F736AB81B58370B00335122 /* FUZCacherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F736AB71B58370B00335122 /* FUZCacherTests.m */; };
+		C1DD82F471D7E04D909057CB /* libPods-FUZCacherTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4836D7959B1A8EB5276FF553 /* libPods-FUZCacherTests.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6F736AB21B58370A00335122 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6F736A901B58370A00335122 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6F736A971B58370A00335122;
+			remoteInfo = FUZCacher;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2930ABD5418F15C77B0EE007 /* Pods-FUZCacherTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FUZCacherTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FUZCacherTests/Pods-FUZCacherTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4836D7959B1A8EB5276FF553 /* libPods-FUZCacherTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FUZCacherTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F736A981B58370A00335122 /* FUZCacher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FUZCacher.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F736A9C1B58370A00335122 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6F736A9D1B58370A00335122 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6F736A9F1B58370A00335122 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		6F736AA01B58370A00335122 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		6F736AA21B58370A00335122 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		6F736AA31B58370A00335122 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		6F736AA61B58370A00335122 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6F736AA81B58370A00335122 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		6F736AAB1B58370A00335122 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		6F736AB11B58370A00335122 /* FUZCacherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FUZCacherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F736AB61B58370B00335122 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6F736AB71B58370B00335122 /* FUZCacherTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FUZCacherTests.m; sourceTree = "<group>"; };
+		AF5F4AA1278F4986CD603831 /* Pods-FUZCacherTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FUZCacherTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FUZCacherTests/Pods-FUZCacherTests.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6F736A951B58370A00335122 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6F736AAE1B58370A00335122 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C1DD82F471D7E04D909057CB /* libPods-FUZCacherTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		318D2BA96B3E0E1FF002EA9E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4836D7959B1A8EB5276FF553 /* libPods-FUZCacherTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6F736A8F1B58370A00335122 = {
+			isa = PBXGroup;
+			children = (
+				6F736A9A1B58370A00335122 /* FUZCacher */,
+				6F736AB41B58370A00335122 /* FUZCacherTests */,
+				6F736A991B58370A00335122 /* Products */,
+				B676DD4A68E97E7A07C9D2C6 /* Pods */,
+				318D2BA96B3E0E1FF002EA9E /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		6F736A991B58370A00335122 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6F736A981B58370A00335122 /* FUZCacher.app */,
+				6F736AB11B58370A00335122 /* FUZCacherTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6F736A9A1B58370A00335122 /* FUZCacher */ = {
+			isa = PBXGroup;
+			children = (
+				6F736A9F1B58370A00335122 /* AppDelegate.h */,
+				6F736AA01B58370A00335122 /* AppDelegate.m */,
+				6F736AA21B58370A00335122 /* ViewController.h */,
+				6F736AA31B58370A00335122 /* ViewController.m */,
+				6F736AA51B58370A00335122 /* Main.storyboard */,
+				6F736AA81B58370A00335122 /* Images.xcassets */,
+				6F736AAA1B58370A00335122 /* LaunchScreen.xib */,
+				6F736A9B1B58370A00335122 /* Supporting Files */,
+			);
+			path = FUZCacher;
+			sourceTree = "<group>";
+		};
+		6F736A9B1B58370A00335122 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6F736A9C1B58370A00335122 /* Info.plist */,
+				6F736A9D1B58370A00335122 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6F736AB41B58370A00335122 /* FUZCacherTests */ = {
+			isa = PBXGroup;
+			children = (
+				6F736AB71B58370B00335122 /* FUZCacherTests.m */,
+				6F736AB51B58370B00335122 /* Supporting Files */,
+			);
+			path = FUZCacherTests;
+			sourceTree = "<group>";
+		};
+		6F736AB51B58370B00335122 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6F736AB61B58370B00335122 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B676DD4A68E97E7A07C9D2C6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2930ABD5418F15C77B0EE007 /* Pods-FUZCacherTests.debug.xcconfig */,
+				AF5F4AA1278F4986CD603831 /* Pods-FUZCacherTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6F736A971B58370A00335122 /* FUZCacher */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6F736ABB1B58370B00335122 /* Build configuration list for PBXNativeTarget "FUZCacher" */;
+			buildPhases = (
+				6F736A941B58370A00335122 /* Sources */,
+				6F736A951B58370A00335122 /* Frameworks */,
+				6F736A961B58370A00335122 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FUZCacher;
+			productName = FUZCacher;
+			productReference = 6F736A981B58370A00335122 /* FUZCacher.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6F736AB01B58370A00335122 /* FUZCacherTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6F736ABE1B58370B00335122 /* Build configuration list for PBXNativeTarget "FUZCacherTests" */;
+			buildPhases = (
+				E244D931847460154D90A284 /* Check Pods Manifest.lock */,
+				6F736AAD1B58370A00335122 /* Sources */,
+				6F736AAE1B58370A00335122 /* Frameworks */,
+				6F736AAF1B58370A00335122 /* Resources */,
+				8F0974F10993C38CCB791ABC /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6F736AB31B58370A00335122 /* PBXTargetDependency */,
+			);
+			name = FUZCacherTests;
+			productName = FUZCacherTests;
+			productReference = 6F736AB11B58370A00335122 /* FUZCacherTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6F736A901B58370A00335122 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = FUZ;
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = fuzza;
+				TargetAttributes = {
+					6F736A971B58370A00335122 = {
+						CreatedOnToolsVersion = 6.3.1;
+					};
+					6F736AB01B58370A00335122 = {
+						CreatedOnToolsVersion = 6.3.1;
+						TestTargetID = 6F736A971B58370A00335122;
+					};
+				};
+			};
+			buildConfigurationList = 6F736A931B58370A00335122 /* Build configuration list for PBXProject "FUZCacher" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6F736A8F1B58370A00335122;
+			productRefGroup = 6F736A991B58370A00335122 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6F736A971B58370A00335122 /* FUZCacher */,
+				6F736AB01B58370A00335122 /* FUZCacherTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6F736A961B58370A00335122 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6F736AA71B58370A00335122 /* Main.storyboard in Resources */,
+				6F736AAC1B58370A00335122 /* LaunchScreen.xib in Resources */,
+				6F736AA91B58370A00335122 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6F736AAF1B58370A00335122 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8F0974F10993C38CCB791ABC /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FUZCacherTests/Pods-FUZCacherTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E244D931847460154D90A284 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6F736A941B58370A00335122 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6F736AA41B58370A00335122 /* ViewController.m in Sources */,
+				6F736AA11B58370A00335122 /* AppDelegate.m in Sources */,
+				6F736A9E1B58370A00335122 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6F736AAD1B58370A00335122 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6F736AB81B58370B00335122 /* FUZCacherTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6F736AB31B58370A00335122 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6F736A971B58370A00335122 /* FUZCacher */;
+			targetProxy = 6F736AB21B58370A00335122 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6F736AA51B58370A00335122 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6F736AA61B58370A00335122 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		6F736AAA1B58370A00335122 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6F736AAB1B58370A00335122 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6F736AB91B58370B00335122 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		6F736ABA1B58370B00335122 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6F736ABC1B58370B00335122 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = FUZCacher/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		6F736ABD1B58370B00335122 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = FUZCacher/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		6F736ABF1B58370B00335122 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2930ABD5418F15C77B0EE007 /* Pods-FUZCacherTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = FUZCacherTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FUZCacher.app/FUZCacher";
+			};
+			name = Debug;
+		};
+		6F736AC01B58370B00335122 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AF5F4AA1278F4986CD603831 /* Pods-FUZCacherTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = FUZCacherTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FUZCacher.app/FUZCacher";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6F736A931B58370A00335122 /* Build configuration list for PBXProject "FUZCacher" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6F736AB91B58370B00335122 /* Debug */,
+				6F736ABA1B58370B00335122 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6F736ABB1B58370B00335122 /* Build configuration list for PBXNativeTarget "FUZCacher" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6F736ABC1B58370B00335122 /* Debug */,
+				6F736ABD1B58370B00335122 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6F736ABE1B58370B00335122 /* Build configuration list for PBXNativeTarget "FUZCacherTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6F736ABF1B58370B00335122 /* Debug */,
+				6F736AC01B58370B00335122 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6F736A901B58370A00335122 /* Project object */;
+}

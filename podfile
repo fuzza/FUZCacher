@@ -1,0 +1,5 @@
+target :FUZCacherTests, :exclusive => true do
+	pod 'OCMock'
+	pod 'Specta'
+	pod 'Expecta'
+end
