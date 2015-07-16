@@ -28,12 +28,12 @@
 
 + (BOOL)canInitWithTask:(NSURLSessionTask *)task {
     
-    if ([NSURLProtocol propertyForKey:@"MyURLProtocolHandledKey" inRequest:task.originalRequest]) {
+    if ([NSURLProtocol propertyForKey:NSStringFromClass([self class]) inRequest:task.originalRequest]) {
         return NO;
     }
     
     return ([task.originalRequest.URL.scheme isEqualToString:@"http"] &&
-            ([ task.originalRequest.URL.pathExtension isEqualToString:@"mp4"] || [ task.originalRequest.URL.pathExtension isEqualToString:@"m3u8"]));
+            ([task.originalRequest.URL.pathExtension isEqualToString:@"mp4"] || [task.originalRequest.URL.pathExtension isEqualToString:@"m3u8"]));
 }
 
 + (NSURLRequest *)canonicalRequestForRequest:(NSURLRequest *)request
@@ -57,7 +57,8 @@
 
 #pragma mark - NSURConnectionDelegate
 
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
     [self.client URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageNotAllowed];
 }
 

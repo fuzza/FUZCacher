@@ -22,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    NSString *urlString = @"http://sample-videos.com/video/mp4/720/big_buck_bunny_720p_50mb.mp4";
+    NSString *urlString = @"http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/sl.m3u8"; //@"http://sample-videos.com/video/mp4/720/big_buck_bunny_720p_50mb.mp4";
     NSURL *videoUrl = [NSURL URLWithString:urlString];
     
     [NSURLProtocol registerClass:[FUZCachedURLProtocol class]];
