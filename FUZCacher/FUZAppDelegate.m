@@ -6,13 +6,13 @@
 //  Copyright (c) 2015 fuzza. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "FUZAppDelegate.h"
 
-@interface AppDelegate ()
+@interface FUZAppDelegate ()
 
 @end
 
-@implementation AppDelegate
+@implementation FUZAppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {

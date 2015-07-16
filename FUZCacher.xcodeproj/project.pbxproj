@@ -7,13 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		285A53A59E7FECB6032C902C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA60DDAE4E07503515EEC456 /* libPods.a */; };
 		6F736A9E1B58370A00335122 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F736A9D1B58370A00335122 /* main.m */; };
-		6F736AA11B58370A00335122 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F736AA01B58370A00335122 /* AppDelegate.m */; };
-		6F736AA41B58370A00335122 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F736AA31B58370A00335122 /* ViewController.m */; };
+		6F736AA11B58370A00335122 /* FUZAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F736AA01B58370A00335122 /* FUZAppDelegate.m */; };
 		6F736AA71B58370A00335122 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F736AA51B58370A00335122 /* Main.storyboard */; };
 		6F736AA91B58370A00335122 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F736AA81B58370A00335122 /* Images.xcassets */; };
 		6F736AAC1B58370A00335122 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F736AAA1B58370A00335122 /* LaunchScreen.xib */; };
 		6F736AB81B58370B00335122 /* FUZCacherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F736AB71B58370B00335122 /* FUZCacherTests.m */; };
+		6F736AC61B583CA600335122 /* FUZPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F736AC51B583CA600335122 /* FUZPlayerViewController.m */; };
+		6F736AC81B583D4C00335122 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F736AC71B583D4C00335122 /* AVFoundation.framework */; };
+		6F736ACB1B583FD900335122 /* FUZRemoteVideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F736ACA1B583FD900335122 /* FUZRemoteVideoPlayer.m */; };
 		C1DD82F471D7E04D909057CB /* libPods-FUZCacherTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4836D7959B1A8EB5276FF553 /* libPods-FUZCacherTests.a */; };
 /* End PBXBuildFile section */
 
@@ -30,20 +33,26 @@
 /* Begin PBXFileReference section */
 		2930ABD5418F15C77B0EE007 /* Pods-FUZCacherTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FUZCacherTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FUZCacherTests/Pods-FUZCacherTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4836D7959B1A8EB5276FF553 /* libPods-FUZCacherTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FUZCacherTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5487D24C3DA1B4A3EBDB5698 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		6F736A981B58370A00335122 /* FUZCacher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FUZCacher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F736A9C1B58370A00335122 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F736A9D1B58370A00335122 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		6F736A9F1B58370A00335122 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		6F736AA01B58370A00335122 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		6F736AA21B58370A00335122 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		6F736AA31B58370A00335122 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		6F736A9F1B58370A00335122 /* FUZAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FUZAppDelegate.h; sourceTree = "<group>"; };
+		6F736AA01B58370A00335122 /* FUZAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FUZAppDelegate.m; sourceTree = "<group>"; };
 		6F736AA61B58370A00335122 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6F736AA81B58370A00335122 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6F736AAB1B58370A00335122 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		6F736AB11B58370A00335122 /* FUZCacherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FUZCacherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F736AB61B58370B00335122 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F736AB71B58370B00335122 /* FUZCacherTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FUZCacherTests.m; sourceTree = "<group>"; };
+		6F736AC41B583CA600335122 /* FUZPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUZPlayerViewController.h; sourceTree = "<group>"; };
+		6F736AC51B583CA600335122 /* FUZPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUZPlayerViewController.m; sourceTree = "<group>"; };
+		6F736AC71B583D4C00335122 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		6F736AC91B583FD900335122 /* FUZRemoteVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUZRemoteVideoPlayer.h; sourceTree = "<group>"; };
+		6F736ACA1B583FD900335122 /* FUZRemoteVideoPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUZRemoteVideoPlayer.m; sourceTree = "<group>"; };
+		7069A2EAF5E7B2CF00BB87B4 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		AF5F4AA1278F4986CD603831 /* Pods-FUZCacherTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FUZCacherTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FUZCacherTests/Pods-FUZCacherTests.release.xcconfig"; sourceTree = "<group>"; };
+		BA60DDAE4E07503515EEC456 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +60,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F736AC81B583D4C00335122 /* AVFoundation.framework in Frameworks */,
+				285A53A59E7FECB6032C902C /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,7 +79,9 @@
 		318D2BA96B3E0E1FF002EA9E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6F736AC71B583D4C00335122 /* AVFoundation.framework */,
 				4836D7959B1A8EB5276FF553 /* libPods-FUZCacherTests.a */,
+				BA60DDAE4E07503515EEC456 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -96,14 +109,16 @@
 		6F736A9A1B58370A00335122 /* FUZCacher */ = {
 			isa = PBXGroup;
 			children = (
-				6F736A9F1B58370A00335122 /* AppDelegate.h */,
-				6F736AA01B58370A00335122 /* AppDelegate.m */,
-				6F736AA21B58370A00335122 /* ViewController.h */,
-				6F736AA31B58370A00335122 /* ViewController.m */,
+				6F736A9F1B58370A00335122 /* FUZAppDelegate.h */,
+				6F736AA01B58370A00335122 /* FUZAppDelegate.m */,
 				6F736AA51B58370A00335122 /* Main.storyboard */,
 				6F736AA81B58370A00335122 /* Images.xcassets */,
 				6F736AAA1B58370A00335122 /* LaunchScreen.xib */,
 				6F736A9B1B58370A00335122 /* Supporting Files */,
+				6F736AC41B583CA600335122 /* FUZPlayerViewController.h */,
+				6F736AC51B583CA600335122 /* FUZPlayerViewController.m */,
+				6F736AC91B583FD900335122 /* FUZRemoteVideoPlayer.h */,
+				6F736ACA1B583FD900335122 /* FUZRemoteVideoPlayer.m */,
 			);
 			path = FUZCacher;
 			sourceTree = "<group>";
@@ -139,6 +154,8 @@
 			children = (
 				2930ABD5418F15C77B0EE007 /* Pods-FUZCacherTests.debug.xcconfig */,
 				AF5F4AA1278F4986CD603831 /* Pods-FUZCacherTests.release.xcconfig */,
+				5487D24C3DA1B4A3EBDB5698 /* Pods.debug.xcconfig */,
+				7069A2EAF5E7B2CF00BB87B4 /* Pods.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -150,9 +167,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6F736ABB1B58370B00335122 /* Build configuration list for PBXNativeTarget "FUZCacher" */;
 			buildPhases = (
+				49495BB73AA80E6C9FBD3978 /* Check Pods Manifest.lock */,
 				6F736A941B58370A00335122 /* Sources */,
 				6F736A951B58370A00335122 /* Frameworks */,
 				6F736A961B58370A00335122 /* Resources */,
+				E08A1202F9CF3D3E95058C14 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -242,6 +261,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		49495BB73AA80E6C9FBD3978 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		8F0974F10993C38CCB791ABC /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -255,6 +289,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FUZCacherTests/Pods-FUZCacherTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E08A1202F9CF3D3E95058C14 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E244D931847460154D90A284 /* Check Pods Manifest.lock */ = {
@@ -279,8 +328,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F736AA41B58370A00335122 /* ViewController.m in Sources */,
-				6F736AA11B58370A00335122 /* AppDelegate.m in Sources */,
+				6F736AA11B58370A00335122 /* FUZAppDelegate.m in Sources */,
+				6F736AC61B583CA600335122 /* FUZPlayerViewController.m in Sources */,
+				6F736ACB1B583FD900335122 /* FUZRemoteVideoPlayer.m in Sources */,
 				6F736A9E1B58370A00335122 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -405,6 +455,7 @@
 		};
 		6F736ABC1B58370B00335122 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5487D24C3DA1B4A3EBDB5698 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = FUZCacher/Info.plist;
@@ -416,6 +467,7 @@
 		};
 		6F736ABD1B58370B00335122 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7069A2EAF5E7B2CF00BB87B4 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = FUZCacher/Info.plist;

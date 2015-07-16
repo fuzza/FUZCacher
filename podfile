@@ -1,3 +1,5 @@
+pod 'Masonry'
+
 target :FUZCacherTests, :exclusive => true do
 	pod 'OCMock'
 	pod 'Specta'
