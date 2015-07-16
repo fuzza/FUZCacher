@@ -8,6 +8,7 @@
 
 #import "FUZPlayerViewController.h"
 #import "FUZRemoteVideoPlayer.h"
+#import "FUZCachedURLProtocol.h"
 
 @interface FUZPlayerViewController ()
 
@@ -23,6 +24,8 @@
 
     NSString *urlString = @"http://sample-videos.com/video/mp4/720/big_buck_bunny_720p_50mb.mp4";
     NSURL *videoUrl = [NSURL URLWithString:urlString];
+    
+    [NSURLProtocol registerClass:[FUZCachedURLProtocol class]];
     
     [self setupRemotePlayerWithURL:videoUrl];
     [self.remoteVideoPlayer play];
