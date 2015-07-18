@@ -18,11 +18,12 @@ typedef NS_ENUM(NSInteger, FUZRemoteVideoPlayerState)
     FUZRemoteVideoPlayerStateEnded
 };
 
-@interface FUZRemoteVideoPlayer : NSObject
+@interface FUZRemoteVideoPlayer : NSObject  <AVAssetResourceLoaderDelegate>
 
 @property (nonatomic, strong, readonly) AVPlayerLayer *playerLayer;
 
 - (void)setupWithVideoUrl:(NSURL *)videoUrl;
 - (void)play;
+- (void)reload;
 
 @end

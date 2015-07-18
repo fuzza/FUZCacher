@@ -8,16 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		285A53A59E7FECB6032C902C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA60DDAE4E07503515EEC456 /* libPods.a */; };
+		6F09BC4C1B5A5C82000B57F2 /* FUZLoadingOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F09BC4B1B5A5C82000B57F2 /* FUZLoadingOperation.m */; };
+		6F09BC4F1B5A5FB2000B57F2 /* NSURL+FUZScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F09BC4E1B5A5FB2000B57F2 /* NSURL+FUZScheme.m */; };
+		6F09BC511B5A6026000B57F2 /* NSURL+FUZSchemeSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F09BC501B5A6026000B57F2 /* NSURL+FUZSchemeSpec.m */; };
 		6F736A9E1B58370A00335122 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F736A9D1B58370A00335122 /* main.m */; };
 		6F736AA11B58370A00335122 /* FUZAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F736AA01B58370A00335122 /* FUZAppDelegate.m */; };
 		6F736AA71B58370A00335122 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F736AA51B58370A00335122 /* Main.storyboard */; };
 		6F736AA91B58370A00335122 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F736AA81B58370A00335122 /* Images.xcassets */; };
 		6F736AAC1B58370A00335122 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F736AAA1B58370A00335122 /* LaunchScreen.xib */; };
-		6F736AB81B58370B00335122 /* FUZCacherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F736AB71B58370B00335122 /* FUZCacherTests.m */; };
 		6F736AC61B583CA600335122 /* FUZPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F736AC51B583CA600335122 /* FUZPlayerViewController.m */; };
 		6F736AC81B583D4C00335122 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F736AC71B583D4C00335122 /* AVFoundation.framework */; };
 		6F736ACB1B583FD900335122 /* FUZRemoteVideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F736ACA1B583FD900335122 /* FUZRemoteVideoPlayer.m */; };
 		6F736ACE1B584BBF00335122 /* FUZCachedURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F736ACD1B584BBF00335122 /* FUZCachedURLProtocol.m */; };
+		6FE8E1611B59938200B25498 /* FUZHTTPResponseCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FE8E1601B59938200B25498 /* FUZHTTPResponseCache.m */; };
+		6FE8E1641B59A59E00B25498 /* FUZCachedChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FE8E1631B59A59E00B25498 /* FUZCachedChunk.m */; };
 		C1DD82F471D7E04D909057CB /* libPods-FUZCacherTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4836D7959B1A8EB5276FF553 /* libPods-FUZCacherTests.a */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +39,11 @@
 		2930ABD5418F15C77B0EE007 /* Pods-FUZCacherTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FUZCacherTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FUZCacherTests/Pods-FUZCacherTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4836D7959B1A8EB5276FF553 /* libPods-FUZCacherTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FUZCacherTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5487D24C3DA1B4A3EBDB5698 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		6F09BC4A1B5A5C82000B57F2 /* FUZLoadingOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUZLoadingOperation.h; sourceTree = "<group>"; };
+		6F09BC4B1B5A5C82000B57F2 /* FUZLoadingOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUZLoadingOperation.m; sourceTree = "<group>"; };
+		6F09BC4D1B5A5FB2000B57F2 /* NSURL+FUZScheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+FUZScheme.h"; sourceTree = "<group>"; };
+		6F09BC4E1B5A5FB2000B57F2 /* NSURL+FUZScheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+FUZScheme.m"; sourceTree = "<group>"; };
+		6F09BC501B5A6026000B57F2 /* NSURL+FUZSchemeSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+FUZSchemeSpec.m"; sourceTree = "<group>"; };
 		6F736A981B58370A00335122 /* FUZCacher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FUZCacher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F736A9C1B58370A00335122 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F736A9D1B58370A00335122 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -45,7 +54,6 @@
 		6F736AAB1B58370A00335122 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		6F736AB11B58370A00335122 /* FUZCacherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FUZCacherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F736AB61B58370B00335122 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6F736AB71B58370B00335122 /* FUZCacherTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FUZCacherTests.m; sourceTree = "<group>"; };
 		6F736AC41B583CA600335122 /* FUZPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUZPlayerViewController.h; sourceTree = "<group>"; };
 		6F736AC51B583CA600335122 /* FUZPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUZPlayerViewController.m; sourceTree = "<group>"; };
 		6F736AC71B583D4C00335122 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -53,6 +61,10 @@
 		6F736ACA1B583FD900335122 /* FUZRemoteVideoPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUZRemoteVideoPlayer.m; sourceTree = "<group>"; };
 		6F736ACC1B584BBF00335122 /* FUZCachedURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUZCachedURLProtocol.h; sourceTree = "<group>"; };
 		6F736ACD1B584BBF00335122 /* FUZCachedURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUZCachedURLProtocol.m; sourceTree = "<group>"; };
+		6FE8E15F1B59938200B25498 /* FUZHTTPResponseCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUZHTTPResponseCache.h; sourceTree = "<group>"; };
+		6FE8E1601B59938200B25498 /* FUZHTTPResponseCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUZHTTPResponseCache.m; sourceTree = "<group>"; };
+		6FE8E1621B59A59E00B25498 /* FUZCachedChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUZCachedChunk.h; sourceTree = "<group>"; };
+		6FE8E1631B59A59E00B25498 /* FUZCachedChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUZCachedChunk.m; sourceTree = "<group>"; };
 		7069A2EAF5E7B2CF00BB87B4 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		AF5F4AA1278F4986CD603831 /* Pods-FUZCacherTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FUZCacherTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FUZCacherTests/Pods-FUZCacherTests.release.xcconfig"; sourceTree = "<group>"; };
 		BA60DDAE4E07503515EEC456 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,6 +101,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		6F09BC521B5A61EC000B57F2 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				6F09BC4D1B5A5FB2000B57F2 /* NSURL+FUZScheme.h */,
+				6F09BC4E1B5A5FB2000B57F2 /* NSURL+FUZScheme.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 		6F736A8F1B58370A00335122 = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +133,7 @@
 		6F736A9A1B58370A00335122 /* FUZCacher */ = {
 			isa = PBXGroup;
 			children = (
+				6F09BC521B5A61EC000B57F2 /* Utils */,
 				6F736A9F1B58370A00335122 /* FUZAppDelegate.h */,
 				6F736AA01B58370A00335122 /* FUZAppDelegate.m */,
 				6F736AA51B58370A00335122 /* Main.storyboard */,
@@ -124,6 +146,12 @@
 				6F736ACA1B583FD900335122 /* FUZRemoteVideoPlayer.m */,
 				6F736ACC1B584BBF00335122 /* FUZCachedURLProtocol.h */,
 				6F736ACD1B584BBF00335122 /* FUZCachedURLProtocol.m */,
+				6FE8E15F1B59938200B25498 /* FUZHTTPResponseCache.h */,
+				6FE8E1601B59938200B25498 /* FUZHTTPResponseCache.m */,
+				6FE8E1621B59A59E00B25498 /* FUZCachedChunk.h */,
+				6FE8E1631B59A59E00B25498 /* FUZCachedChunk.m */,
+				6F09BC4A1B5A5C82000B57F2 /* FUZLoadingOperation.h */,
+				6F09BC4B1B5A5C82000B57F2 /* FUZLoadingOperation.m */,
 			);
 			path = FUZCacher;
 			sourceTree = "<group>";
@@ -140,8 +168,8 @@
 		6F736AB41B58370A00335122 /* FUZCacherTests */ = {
 			isa = PBXGroup;
 			children = (
-				6F736AB71B58370B00335122 /* FUZCacherTests.m */,
 				6F736AB51B58370B00335122 /* Supporting Files */,
+				6F09BC501B5A6026000B57F2 /* NSURL+FUZSchemeSpec.m */,
 			);
 			path = FUZCacherTests;
 			sourceTree = "<group>";
@@ -334,7 +362,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F736AA11B58370A00335122 /* FUZAppDelegate.m in Sources */,
+				6FE8E1641B59A59E00B25498 /* FUZCachedChunk.m in Sources */,
+				6F09BC4F1B5A5FB2000B57F2 /* NSURL+FUZScheme.m in Sources */,
+				6FE8E1611B59938200B25498 /* FUZHTTPResponseCache.m in Sources */,
 				6F736AC61B583CA600335122 /* FUZPlayerViewController.m in Sources */,
+				6F09BC4C1B5A5C82000B57F2 /* FUZLoadingOperation.m in Sources */,
 				6F736ACE1B584BBF00335122 /* FUZCachedURLProtocol.m in Sources */,
 				6F736ACB1B583FD900335122 /* FUZRemoteVideoPlayer.m in Sources */,
 				6F736A9E1B58370A00335122 /* main.m in Sources */,
@@ -345,7 +377,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F736AB81B58370B00335122 /* FUZCacherTests.m in Sources */,
+				6F09BC511B5A6026000B57F2 /* NSURL+FUZSchemeSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

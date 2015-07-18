@@ -22,10 +22,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    NSString *urlString = @"http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/sl.m3u8"; //@"http://sample-videos.com/video/mp4/720/big_buck_bunny_720p_50mb.mp4";
+//    @"http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/sl.m3u8";
+
+    NSString *urlString =@"http://sample-videos.com/video/mp4/360/big_buck_bunny_360p_20mb.mp4";
     NSURL *videoUrl = [NSURL URLWithString:urlString];
-    
-    [NSURLProtocol registerClass:[FUZCachedURLProtocol class]];
     
     [self setupRemotePlayerWithURL:videoUrl];
     [self.remoteVideoPlayer play];
@@ -46,6 +46,14 @@
 - (void)setupPlayerView {
     self.playerLayer = self.remoteVideoPlayer.playerLayer;
     [self.view.layer addSublayer:self.playerLayer];
+    [self.view setNeedsLayout];
 }
 
+#pragma mark - IBActions
+
+- (IBAction)resetButtonDidTap:(UIButton *)sender {
+    [self.remoteVideoPlayer reload];
+    [self setupPlayerView];
+    [self.remoteVideoPlayer play];
+}
 @end

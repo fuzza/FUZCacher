@@ -7,6 +7,9 @@
 //
 
 #import "FUZCachedURLProtocol.h"
+#import "FUZHTTPResponseCache.h"
+
+NSString *const kFUZMP4RequestHeaderRangeKey = @"Range";
 
 @interface FUZCachedURLProtocol () <NSURLConnectionDelegate>
 
@@ -16,24 +19,18 @@
 
 @implementation FUZCachedURLProtocol
 
-+ (BOOL)canInitWithRequest:(NSURLRequest *)request {
-    
-    if ([NSURLProtocol propertyForKey:NSStringFromClass([self class]) inRequest:request]) {
++ (BOOL)canInitWithRequest:(NSURLRequest *)request
+{
+    if ([NSURLProtocol propertyForKey:NSStringFromClass([self class]) inRequest:request])
+    {
         return NO;
     }
-    
-    return ([request.URL.scheme isEqualToString:@"http"] &&
-            ([request.URL.pathExtension isEqualToString:@"mp4"] || [request.URL.pathExtension isEqualToString:@"m3u8"]));
+    return ([request.URL.scheme isEqualToString:@"http"] && [request.URL.pathExtension isEqualToString:@"mp4"]);
 }
 
-+ (BOOL)canInitWithTask:(NSURLSessionTask *)task {
-    
-    if ([NSURLProtocol propertyForKey:NSStringFromClass([self class]) inRequest:task.originalRequest]) {
-        return NO;
-    }
-    
-    return ([task.originalRequest.URL.scheme isEqualToString:@"http"] &&
-            ([task.originalRequest.URL.pathExtension isEqualToString:@"mp4"] || [task.originalRequest.URL.pathExtension isEqualToString:@"m3u8"]));
++ (BOOL)canInitWithTask:(NSURLSessionTask *)task
+{
+    return [self canInitWithRequest:task.originalRequest];
 }
 
 + (NSURLRequest *)canonicalRequestForRequest:(NSURLRequest *)request
@@ -41,24 +38,39 @@
     return request;
 }
 
-- (void)startLoading {
-    
+- (void)startLoading
+{
     NSMutableURLRequest *newRequest = [self.request mutableCopy];
     [NSURLProtocol setProperty:@YES forKey:NSStringFromClass([self class]) inRequest:newRequest];
+    NSLog(@"request %@, headers %@", newRequest, [newRequest allHTTPHeaderFields]);
     
-    self.connection = [NSURLConnection connectionWithRequest:newRequest
-                                                    delegate:self];
+    
+        self.connection = [NSURLConnection connectionWithRequest:newRequest
+                                                        delegate:self];
 }
 
 - (void)stopLoading {
-   
     [self.connection cancel];
+    if(!self.connection)
+    {
+        [self.client URLProtocolDidFinishLoading:self];
+    }
+}
+
+#pragma mark - Request handlers
+
+- (BOOL)isFirstBytesRequest:(NSURLRequest *)request {
+    NSString *rangeString = [request.allHTTPHeaderFields objectForKey:kFUZMP4RequestHeaderRangeKey];
+    if([rangeString isEqualToString:@"bytes=0-1"]) {
+        return YES;
+    }
+    return NO;
 }
 
 #pragma mark - NSURConnectionDelegate
 
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
-{
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSHTTPURLResponse *)response {
+    NSLog(@"%@", response);
     [self.client URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageNotAllowed];
 }
 
@@ -73,5 +85,6 @@
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     [self.client URLProtocol:self didFailWithError:error];
 }
+
 
 @end
