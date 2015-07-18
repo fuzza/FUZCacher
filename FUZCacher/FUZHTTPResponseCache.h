@@ -7,11 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "FUZCachedChunk.h"
 
 typedef void(^FUZHTTPResponseCacheBlock)(NSData *cacheBlock, BOOL isLastBlock, NSInteger totalCachedLength);
 
 @interface FUZHTTPResponseCache : NSObject
+
+@property (nonatomic, strong) NSHTTPURLResponse *cachedResponse;
 
 + (instancetype)sharedCache;
 - (void)writeDataToCache:(NSData *)data withOffset:(NSInteger)offset;

@@ -7,11 +7,14 @@
 //
 
 #import "FUZHTTPResponseCache.h"
+#import "FUZFileSystemService.h"
 
 @interface FUZHTTPResponseCache ()
 
-@property (nonatomic, strong) NSMutableArray *chunks;
+
+
 @property (nonatomic, strong) NSMutableArray *ranges;
+@property (nonatomic, strong) FUZFileSystemService *file;
 
 @end
 
@@ -23,91 +26,84 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^(){
         sharedCache = [FUZHTTPResponseCache new];
+        
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        NSString *filePath = [documentsDirectory stringByAppendingPathComponent:@"test.mp4"];
+        sharedCache.file = [[FUZFileSystemService alloc] initWithPath:filePath];
+        
     });
     return sharedCache;
 }
 
 - (void)writeDataToCache:(NSData *)data withOffset:(NSInteger)offset
 {
-    for(FUZCachedChunk *chunk in self.chunks)
+    [self.file writeData:data
+              withOffset:offset];
+    
+    NSRange targetRange = NSMakeRange(offset, data.length);
+    
+    BOOL merged = NO;
+    for (NSValue *rangeValue in self.ranges)
     {
-        if(chunk.startOffset == offset)
-        {
-            [self.chunks removeObject:chunk];
-            break;
-        }
+        NSRange cachedRange = [rangeValue rangeValue];
+        NSRange intersection = NSIntersectionRange(cachedRange, targetRange);
         
-        if(chunk.startOffset+chunk.length == offset)
+        BOOL shouldBeMerged = (cachedRange.location + cachedRange.length == targetRange.location);
+        shouldBeMerged = shouldBeMerged || (targetRange.location + targetRange.length == cachedRange.location);
+        
+        if (intersection.length > 0 || shouldBeMerged)
         {
-            [chunk.data appendData:data];
-            chunk.length+=data.length;
-            return;
+            NSRange unionRange = NSUnionRange(cachedRange, targetRange);
+            [self.ranges removeObject:rangeValue];
+            [self.ranges addObject:[NSValue valueWithRange:unionRange]];
+            NSLog(@"Merged ranges to %@", NSStringFromRange(unionRange));
+            merged = YES;
+            break;
         }
     }
     
-    FUZCachedChunk *newChunk = [[FUZCachedChunk alloc] init];
-    [newChunk.data appendData:data];
-    newChunk.startOffset = offset;
-    newChunk.length = data.length;
-    
-    [self.chunks addObject:newChunk];
+    if(!merged)
+    {
+        NSLog(@"Added rangee to %@", NSStringFromRange(targetRange));
+        [self.ranges addObject:[NSValue valueWithRange:targetRange]];
+    }
 }
 
 - (void)readFromCacheFromOffset:(NSInteger)offset withLength:(NSInteger)length cacheBlock:(FUZHTTPResponseCacheBlock)block
 {
-    for(FUZCachedChunk *chunk in self.chunks)
+    NSRange targetRange = NSMakeRange(offset, length);
+    NSRange __block intersection;
+    for (NSValue *rangeValue in self.ranges)
     {
-        if([chunk containsLocation:offset])
+        NSRange cachedRange = [rangeValue rangeValue];
+        NSRange matched = NSIntersectionRange(cachedRange, targetRange);
+        if (matched.length > 0 && matched.location == targetRange.location)
         {
-            NSData *cachedLocalData = nil;
-            
-            NSInteger localOffset = offset - chunk.startOffset;
-            NSInteger remainingChunkLength = chunk.data.length - localOffset;
-            if(remainingChunkLength <= length)
-            {
-                cachedLocalData = [chunk.data subdataWithRange:NSMakeRange(localOffset, remainingChunkLength)];
-            }
-            else
-            {
-                cachedLocalData = [chunk.data subdataWithRange:NSMakeRange(localOffset, length)];
-            }
-            
-            NSInteger blockSize = 14061;
-            NSInteger blockOffset = 0;
-            
-            NSData *subdata = cachedLocalData;
-            while (cachedLocalData.length - blockOffset > blockSize)
-            {
-                subdata = [cachedLocalData subdataWithRange:NSMakeRange(blockOffset, blockSize)];
-                blockOffset+=blockSize;
-                block(subdata, NO, blockOffset);
-            }
-            subdata = [cachedLocalData subdataWithRange:NSMakeRange(blockOffset, cachedLocalData.length - blockOffset)];
-            block(subdata, YES, cachedLocalData.length);
-            return;
+            intersection = matched;
+            break;
         }
     }
+
+    [self.file readDataFromStartOffset:intersection.location length:intersection.length blockSize:1024 dataCallback:^(NSData *chunk)
+    {
+        block(chunk, NO, 0);
+    }];
 }
 
 - (BOOL)canReadFromCacheWithOffset:(NSInteger)offset
 {
-    for(FUZCachedChunk *chunk in self.chunks)
+    NSRange targetRange = NSMakeRange(offset, 1);
+    for (NSValue *rangeValue in self.ranges)
     {
-        if([chunk containsLocation:offset])
+        NSRange cachedRange = [rangeValue rangeValue];
+        NSRange intersection = NSIntersectionRange(cachedRange, targetRange);
+        if (intersection.length > 0)
         {
             return YES;
         }
     }
     return NO;
-}
-
-- (NSMutableArray *)chunks
-{
-    if(!_chunks)
-    {
-        _chunks = [@[] mutableCopy];
-    }
-    return _chunks;
 }
 
 - (NSMutableArray *)ranges

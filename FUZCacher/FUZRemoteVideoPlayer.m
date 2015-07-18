@@ -7,6 +7,7 @@
 //
 #import "FUZRemoteVideoPlayer.h"
 #import "FUZLoadingOperation.h"
+#import "NSURL+FUZScheme.h"
 
 @interface FUZRemoteVideoPlayer () <AVAssetResourceLoaderDelegate>
 
@@ -29,17 +30,16 @@
     if(self)
     {
         self.operationQueue = [[NSOperationQueue alloc] init];
+        self.operationQueue.maxConcurrentOperationCount = 1;
     }
     return self;
 }
 
-- (void)setupWithVideoUrl:(NSURL *)videoUrl {
+- (void)setupWithVideoUrl:(NSURL *)videoUrl
+{
     self.currentURL = videoUrl;
     
-//    [NSURLProtocol registerClass:[FUZCachedURLProtocol class]];
-    
-//    AVURLAsset *asset = [AVURLAsset URLAssetWithURL:videoUrl options:nil];
-    AVURLAsset *asset = [AVURLAsset URLAssetWithURL:[self videoURLWithCustomScheme:@"streaming"] options:nil];
+    AVURLAsset *asset = [AVURLAsset URLAssetWithURL:[videoUrl fuz_urlWithScheme:@"streaming"] options:nil];
     [asset.resourceLoader setDelegate:self queue:dispatch_get_main_queue()];
 
     AVPlayerItem *playerItem = [AVPlayerItem playerItemWithAsset:asset];
@@ -50,17 +50,14 @@
     [self.videoPlayer play];
 }
 
-- (NSURL *)videoURLWithCustomScheme:(NSString *)scheme {
-    NSURLComponents *components = [[NSURLComponents alloc] initWithURL:[self currentURL] resolvingAgainstBaseURL:NO];
-    components.scheme = scheme;
-    return [components URL];
-}
-
-- (void)play {
+- (void)play
+{
     [self.videoPlayer play];
 }
 
-- (void)reload {
+- (void)reload
+{
+    [self.operationQueue cancelAllOperations];
     [self.videoPlayer pause];
     self.videoPlayer = nil;
     
@@ -71,27 +68,30 @@
     }
 
     [self setupWithVideoUrl:self.currentURL];
-    
 }
 
-- (void)setVideoPlayer:(AVPlayer *)videoPlayer {
+- (void)setVideoPlayer:(AVPlayer *)videoPlayer
+{
     [self resetPlayerObserving];
     _videoPlayer = videoPlayer;
     [self setupPlayerObserving];
 }
 
-- (void)dealloc {
+- (void)dealloc
+{
     [self resetPlayerObserving];
 }
 
-- (void)setupPlayerObserving {
+- (void)setupPlayerObserving
+{
     [self.currentItem addObserver:self
                        forKeyPath:NSStringFromSelector(@selector(playbackLikelyToKeepUp))
                           options:NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew
                           context:(void *)self];
 }
 
-- (void)resetPlayerObserving {
+- (void)resetPlayerObserving
+{
     [self.currentItem removeObserver:self
                           forKeyPath:NSStringFromSelector(@selector(playbackLikelyToKeepUp))
                              context:(void *)self];
@@ -100,8 +100,10 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath
                       ofObject:(id)object
                         change:(NSDictionary *)change
-                       context:(void *)context {
-    if([keyPath isEqualToString:NSStringFromSelector(@selector(playbackLikelyToKeepUp))]) {
+                       context:(void *)context
+{
+    if([keyPath isEqualToString:NSStringFromSelector(@selector(playbackLikelyToKeepUp))])
+    {
         [self playbackLikelyToKeepUpDidChanged];
     }
 }
@@ -133,7 +135,13 @@
 
 - (void)resourceLoader:(AVAssetResourceLoader *)resourceLoader didCancelLoadingRequest:(AVAssetResourceLoadingRequest *)loadingRequest
 {
-    [self.currentOperation cancel];
+    for(FUZLoadingOperation *op in self.operationQueue.operations)
+    {
+        if(op.resourceLoadingRequest == loadingRequest)
+        {
+            [op cancel];
+        }
+    }
 }
 
 @end

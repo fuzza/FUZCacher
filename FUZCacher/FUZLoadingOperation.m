@@ -16,8 +16,6 @@
 
 @interface FUZLoadingOperation () <NSURLConnectionDelegate>
 
-@property (nonatomic, strong) FUZCachedChunk *cachedChunk;
-
 @property (nonatomic, strong) NSURLConnection *connection;
 @property (nonatomic, strong) NSMutableData *receivedData;
 
@@ -27,6 +25,8 @@
 @property (nonatomic, assign) NSInteger dataOffset;
 
 @property (nonatomic, assign) BOOL disableCaching;
+
+@property (nonatomic, assign) NSRange requiredRange;
 
 @end
 
@@ -44,56 +44,70 @@
         return;
     }
     
-    self.finished = NO;
-    self.executing = YES;
+    [self startExecuting];
+    
+    self.requiredRange = NSMakeRange(self.resourceLoadingRequest.dataRequest.requestedOffset, self.resourceLoadingRequest.dataRequest.requestedLength);
+    self.dataOffset = self.requiredRange.location;
     
     NSMutableURLRequest *request = [self.resourceLoadingRequest.request mutableCopy];
     request.URL = [request.URL fuz_urlWithScheme:kFUZDefaultScheme];
     request.cachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
-    
-    if(self.resourceLoadingRequest.contentInformationRequest)
-    {
-        self.disableCaching = YES;
-    }
+
     
     NSLog(@"%@", self.resourceLoadingRequest);
     NSLog(@"%@", request.allHTTPHeaderFields);
     
-    self.dataOffset = self.resourceLoadingRequest.dataRequest.currentOffset;
-    
-    if([[FUZHTTPResponseCache sharedCache] canReadFromCacheWithOffset:self.dataOffset])
+    BOOL canReadFromCache = [[FUZHTTPResponseCache sharedCache] canReadFromCacheWithOffset:self.dataOffset];
+    if(canReadFromCache)
     {
+        NSLog(@"can read from cache with offset %ld", (long)self.dataOffset);
+        NSHTTPURLResponse *cachedResponse = [FUZHTTPResponseCache sharedCache].cachedResponse;
+    
         self.resourceLoadingRequest.contentInformationRequest.contentType = (__bridge NSString *)(kUTTypeMPEG4);
         self.resourceLoadingRequest.contentInformationRequest.contentLength = 21042737;
         self.resourceLoadingRequest.contentInformationRequest.byteRangeAccessSupported = YES;
         
-        NSLog(@"Reading cache from offset %ld", (long)self.dataOffset);
-        [[FUZHTTPResponseCache sharedCache] readFromCacheFromOffset:self.dataOffset withLength:self.resourceLoadingRequest.dataRequest.requestedLength cacheBlock:^(NSData *cachedData, BOOL isLastBlock, NSInteger totalCachedLength)
+        [[FUZHTTPResponseCache sharedCache] readFromCacheFromOffset:self.requiredRange.location withLength:self.requiredRange.length cacheBlock:^(NSData *cacheBlock, BOOL isLastBlock, NSInteger totalCachedLength)
+         {
+             if(self.isCancelled)
+             {
+                 [self.connection cancel];
+                 self.connection = nil;
+                 [self stopExecuting];
+                 return;
+             }
+             
+             [self.resourceLoadingRequest.dataRequest respondWithData:cacheBlock];
+             self.dataOffset += cacheBlock.length;
+         }];
+        
+        if(self.isCancelled)
         {
-            [self.resourceLoadingRequest.dataRequest respondWithData:cachedData];
+            return;
+        }
+        
+        [self.resourceLoadingRequest finishLoading];
+        [self stopExecuting];
+        return;
+        NSInteger loadedLenght = self.dataOffset - self.requiredRange.location;
+        if(loadedLenght < self.requiredRange.length)
+        {
+            NSMutableURLRequest *partialRequest = [self.resourceLoadingRequest.request mutableCopy];
+            partialRequest.URL = [request.URL fuz_urlWithScheme:kFUZDefaultScheme];
+            [partialRequest setValue:[NSString stringWithFormat:@"bytes=%ld-%ld", self.dataOffset, self.requiredRange.location+self.requiredRange.length-1] forHTTPHeaderField:@"Range"];
+            partialRequest.cachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
             
-            if(isLastBlock)
-            {
-                if(totalCachedLength < self.resourceLoadingRequest.dataRequest.requestedLength)
-                {
-                    NSString *modifiedRangeHeader = [NSString stringWithFormat:@"bytes=%lld-%lld", self.resourceLoadingRequest.dataRequest.requestedOffset+totalCachedLength, self.resourceLoadingRequest.dataRequest.requestedOffset + self.resourceLoadingRequest.dataRequest.requestedLength];
-                    
-                    [request setValue:modifiedRangeHeader forHTTPHeaderField:@"Range"];
-                    NSLog(@"Cache reading ended, started request with Modified headers%@", request.allHTTPHeaderFields);
-                    
-                    self.connection = [NSURLConnection connectionWithRequest:request delegate:self];
-                    [self.connection start];
-                    return;
-                }
-                else
-                {
-                    [self.resourceLoadingRequest finishLoading];
-                    self.executing = NO;
-                    self.finished = YES;
-                    return;
-                }
-            }
-        }];
+            self.disableCaching = YES;
+
+            self.connection = [NSURLConnection connectionWithRequest:partialRequest delegate:self];
+            [self.connection start];
+            NSLog(@"%@ started partial", self);
+        }
+        else
+        {
+            [self.resourceLoadingRequest finishLoading];
+            [self stopExecuting];
+        }
     }
     else
     {
@@ -112,22 +126,16 @@
     return YES;
 }
 
-#pragma mark - Accessors/Mutators
-
-- (NSMutableData *)receivedData
-{
-    if(!_receivedData)
-    {
-        _receivedData = [[NSMutableData alloc] init];
-    }
-    return _receivedData;
-}
-
 #pragma mark - NSURLConnectionDelegate
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSHTTPURLResponse *)response
 {
     NSLog(@"%@", response);
+    if(self.disableCaching)
+    {
+        return;
+    }
+    
     dispatch_async(dispatch_get_main_queue(), ^()
     {
         //            NSString *mimeType = item.path.mimeTypeForPathExtension;
@@ -142,19 +150,21 @@
 {
     if(self.isCancelled)
     {
+        NSLog(@"%@ cancelled", self);
         [self.connection cancel];
         self.connection = nil;
-        self.executing = NO;
-        self.finished = YES;
+        [self stopExecuting];
+        return;
     }
     
-    if(!self.disableCaching)
+    if(self.resourceLoadingRequest.contentInformationRequest == nil)
     {
+        //Won't cache content information request
         [[FUZHTTPResponseCache sharedCache] writeDataToCache:data withOffset:self.dataOffset];
         self.dataOffset += data.length;
     }
     
-
+    
     dispatch_async(dispatch_get_main_queue(), ^()
                    {
                        [self.resourceLoadingRequest.dataRequest respondWithData:data];
@@ -168,8 +178,7 @@
                        [self.resourceLoadingRequest finishLoading];
                    });
     
-    self.executing = NO;
-    self.finished = YES;
+    [self stopExecuting];
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
@@ -179,9 +188,26 @@
                        [self.resourceLoadingRequest finishLoadingWithError:error];
                    });
     
-    
-    self.executing = NO;
-    self.finished = YES;
+    [self stopExecuting];
 }
 
+- (void)startExecuting
+{
+    [self willChangeValueForKey:NSStringFromSelector(@selector(isExecuting))];
+    [self willChangeValueForKey:NSStringFromSelector(@selector(isFinished))];
+    _executing = YES;
+    _finished = NO;
+    [self didChangeValueForKey:NSStringFromSelector(@selector(isFinished))];
+    [self didChangeValueForKey:NSStringFromSelector(@selector(isExecuting))];
+}
+
+- (void)stopExecuting
+{
+    [self willChangeValueForKey:NSStringFromSelector(@selector(isExecuting))];
+    [self willChangeValueForKey:NSStringFromSelector(@selector(isFinished))];
+    _executing = NO;
+    _finished = YES;
+    [self didChangeValueForKey:NSStringFromSelector(@selector(isFinished))];
+    [self didChangeValueForKey:NSStringFromSelector(@selector(isExecuting))];
+}
 @end

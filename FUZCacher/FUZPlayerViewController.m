@@ -8,7 +8,6 @@
 
 #import "FUZPlayerViewController.h"
 #import "FUZRemoteVideoPlayer.h"
-#import "FUZCachedURLProtocol.h"
 
 @interface FUZPlayerViewController ()
 
