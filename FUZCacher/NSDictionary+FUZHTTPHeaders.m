@@ -7,6 +7,7 @@
 //
 
 #import "NSDictionary+FUZHTTPHeaders.h"
+@import MobileCoreServices;
 
 NSString * const kRequestHeaderRangeKey = @"Range";
 NSString * const kRequestHeaderRangeHeaderSeparator = @"=";
@@ -28,6 +29,31 @@ NSString * const kRequestHeaderRangeValuesSeparator = @"-";
     }
     
     return NSMakeRange(0, 0);
+}
+
+- (NSInteger)fuz_responseContentRangeTotalLength
+{
+    NSString *contentRangeString = [self valueForKey:@"Content-Range"];
+    if(contentRangeString)
+    {
+        NSArray *rangeComponents = [contentRangeString componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"/"]];
+        return ((NSString *)[rangeComponents lastObject]).integerValue;
+    }
+    return 0;
+}
+
+- (NSString *)fuz_responseUTIFromContentTypeValue
+{
+    NSString *httpContentType = [self valueForKey:@"Content-Type"];
+    if(httpContentType)
+    {
+        CFStringRef contentType = UTTypeCreatePreferredIdentifierForTag(kUTTagClassMIMEType,(__bridge CFStringRef)(httpContentType),NULL);
+        NSString *UTIString = (__bridge NSString *)(contentType);
+        CFRelease(contentType);
+        
+        return UTIString;
+    }
+    return nil;
 }
 
 @end

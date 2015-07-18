@@ -12,4 +12,7 @@
 
 - (NSRange)fuz_requestBytesRangeValue;
 
+- (NSInteger)fuz_responseContentRangeTotalLength;
+- (NSString *)fuz_responseUTIFromContentTypeValue;
+
 @end
