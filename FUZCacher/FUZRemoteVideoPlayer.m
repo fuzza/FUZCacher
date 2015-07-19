@@ -15,10 +15,7 @@ NSString * const kPlaybackLikelyToKeepUpKey = @"playbackLikelyToKeepUp";
 
 @interface FUZRemoteVideoPlayer () <AVAssetResourceLoaderDelegate>
 
-@property (nonatomic, strong) NSOperationQueue *operationQueue;
 @property (nonatomic, strong) FUZCache *playerCache;
-@property (nonatomic, strong) FUZLoadingOperation *currentOperation;
-
 @property (nonatomic, strong) AVPlayer *videoPlayer;
 @property (nonatomic, strong, readwrite) AVPlayerLayer *playerLayer;
 @property (nonatomic, strong, readonly) AVPlayerItem *currentItem;
@@ -80,7 +77,7 @@ NSString * const kPlaybackLikelyToKeepUpKey = @"playbackLikelyToKeepUp";
 
 - (void)restart
 {
-    [self.operationQueue cancelAllOperations];
+    [self.loader cancelLoading];
     [self.videoPlayer pause];
     self.videoPlayer = nil;
     

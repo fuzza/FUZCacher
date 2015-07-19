@@ -9,10 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @class FUZCacheEntity;
+@class FUZPartialLoadingRequest;
 
 @interface FUZLoadingOperation : NSOperation
 
-@property (nonatomic, strong) AVAssetResourceLoadingRequest *resourceLoadingRequest;
+@property (nonatomic, strong) FUZPartialLoadingRequest *loadingRequest;
 @property (nonatomic, strong) FUZCacheEntity *cache;
 
 @end

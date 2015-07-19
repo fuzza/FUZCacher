@@ -7,11 +7,10 @@
 //
 
 #import "FUZLoadingOperation.h"
-#import "NSURL+FUZScheme.h"
-#import "NSDictionary+FUZHTTPHeaders.h"
+#import "FUZPartialLoadingRequest.h"
 #import "FUZCacheEntity.h"
+#import "NSDictionary+FUZHTTPHeaders.h"
 
-NSString *const kFUZDefaultScheme = @"http";
 NSInteger const kHTTPPartialRequestSuccessCode = 206;
 NSInteger const kHTTPNotModifiedSuccessCode = 304;
 
@@ -21,14 +20,8 @@ NSInteger const kHTTPNotModifiedSuccessCode = 304;
 @property (nonatomic, assign, getter=isExecuting) BOOL executing;
 
 @property (nonatomic, strong) NSURLConnection *connection;
-@property (nonatomic, strong) NSHTTPURLResponse *response;
 
-@property (nonatomic, assign) NSRange requiredRange;
-@property (nonatomic, assign) NSInteger currentLocation;
-
-@property (nonatomic, assign, getter=isContentInfoRequest) BOOL contentInfoRequest;
 @property (nonatomic, assign, getter=isReadFromCache) BOOL readFromCache;
-
 @property (nonatomic, assign, getter=isLoaded) BOOL loaded;
 
 @end
@@ -43,11 +36,8 @@ NSInteger const kHTTPNotModifiedSuccessCode = 304;
 - (void)start
 {
     self.executing = YES;
-
-    NSLog(@"%@", self.resourceLoadingRequest);
-    
-    self.readFromCache = [self.cache canReadFromCacheWithOffset:self.currentLocation];
-    if(self.isReadFromCache && !self.isContentInfoRequest)
+    self.readFromCache = [self.cache canReadFromCacheWithOffset:[self.loadingRequest requiredOffset]];
+    if(self.isReadFromCache && ![self.loadingRequest isMetadataRequest])
     {
         [self receiveDataFromCache];
     }
@@ -57,7 +47,7 @@ NSInteger const kHTTPNotModifiedSuccessCode = 304;
     }
 }
 
-- (void)finish
+- (void)finishWithError:(NSError *)error
 {
     if(self.connection)
     {
@@ -66,10 +56,7 @@ NSInteger const kHTTPNotModifiedSuccessCode = 304;
     }
     self.loaded = YES;
     
-    if(!self.resourceLoadingRequest.isFinished)
-    {
-        [self.resourceLoadingRequest finishLoading];
-    }
+    [self.loadingRequest finishWithError:nil];
 
     self.executing = NO;
     self.finished = YES;
@@ -79,14 +66,14 @@ NSInteger const kHTTPNotModifiedSuccessCode = 304;
 
 - (void)receiveDataFromCache
 {
-    if(self.isContentInfoRequest)
+    if(self.loadingRequest.isMetadataRequest)
     {
         NSDictionary *cachedHeaders = [self.cache copyResponseFromCache].allHeaderFields;
-        [self setupContentInformationRequestWithResponseHeaders:cachedHeaders];
+        [self.loadingRequest fillWithResponseHeaders:cachedHeaders];
     }
     
     @weakify(self);
-    [self.cache readFromCacheFromOffset:self.requiredRange.location withLength:self.requiredRange.length cacheBlock:^(NSData *cacheBlock, BOOL *stop)
+    [self.cache readFromCacheFromOffset:[self.loadingRequest requiredOffset] withLength:[self.loadingRequest requiredLength] cacheBlock:^(NSData *cacheBlock, BOOL *stop)
      {
          @strongify(self);
          if(self.isCancelled)
@@ -94,26 +81,15 @@ NSInteger const kHTTPNotModifiedSuccessCode = 304;
              *stop = YES;
              return;
          }
-
-        [self.resourceLoadingRequest.dataRequest respondWithData:cacheBlock];
-         self.currentLocation += cacheBlock.length;
-         NSLog(@"required - %@, readed %ld",NSStringFromRange(self.requiredRange), (long)self.currentLocation);
+        [self.loadingRequest fillWithData:cacheBlock];
      }];
     
-    if(self.isCancelled)
-    {
-        [self finish];
-        return;
-    }
-    
-    [self finish];
+    [self finishWithError:nil];
 }
 
 - (void)receiveDataFromNetwork
 {
-    NSMutableURLRequest *request = [self.resourceLoadingRequest.request mutableCopy];
-    request.URL = [request.URL fuz_urlWithScheme:kFUZDefaultScheme];
-    request.cachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
+    NSMutableURLRequest *request = [self.loadingRequest httpRequest];
 
     if(self.isReadFromCache)
     {
@@ -132,13 +108,6 @@ NSInteger const kHTTPNotModifiedSuccessCode = 304;
     }
 }
 
-- (void)setupContentInformationRequestWithResponseHeaders:(NSDictionary *)headers
-{
-    self.resourceLoadingRequest.contentInformationRequest.contentType = [headers fuz_responseUTIFromContentTypeValue];
-    self.resourceLoadingRequest.contentInformationRequest.contentLength = [headers fuz_responseContentRangeTotalLength];
-    self.resourceLoadingRequest.contentInformationRequest.byteRangeAccessSupported = YES;
-}
-
 #pragma mark - Mutators / Accessors
 
 - (BOOL)isAsynchronous
@@ -146,27 +115,18 @@ NSInteger const kHTTPNotModifiedSuccessCode = 304;
     return YES;
 }
 
-- (void)setExecuting:(BOOL)executing
+- (void)setIsExecuting:(BOOL)executing
 {
     [self willChangeValueForKey:NSStringFromSelector(@selector(isExecuting))];
     _executing = executing;
     [self didChangeValueForKey:NSStringFromSelector(@selector(isExecuting))];
 }
 
-- (void)setFinished:(BOOL)finished
+- (void)setIsFinished:(BOOL)finished
 {
     [self willChangeValueForKey:NSStringFromSelector(@selector(isFinished))];
     _finished = finished;
     [self didChangeValueForKey:NSStringFromSelector(@selector(isFinished))];
-}
-
-- (void)setResourceLoadingRequest:(AVAssetResourceLoadingRequest *)resourceLoadingRequest
-{
-    _resourceLoadingRequest = resourceLoadingRequest;
-    
-    self.requiredRange = NSMakeRange(self.resourceLoadingRequest.dataRequest.requestedOffset, self.resourceLoadingRequest.dataRequest.requestedLength);
-    self.currentLocation = self.requiredRange.location;
-    self.contentInfoRequest = (self.resourceLoadingRequest.contentInformationRequest != nil);
 }
 
 #pragma mark - NSURLConnectionDelegate
@@ -174,17 +134,16 @@ NSInteger const kHTTPNotModifiedSuccessCode = 304;
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSHTTPURLResponse *)response
 {
     NSLog(@"%@", response);
-    self.response = response;    
-    if(self.isContentInfoRequest && response.statusCode == kHTTPPartialRequestSuccessCode)
+    if(self.loadingRequest.isMetadataRequest && response.statusCode == kHTTPPartialRequestSuccessCode)
     {
         [self.cache writeResponseToCache:response];
-        [self setupContentInformationRequestWithResponseHeaders:response.allHeaderFields];
+        [self.loadingRequest fillWithResponseHeaders:response.allHeaderFields];
         if(self.isReadFromCache)
         {
             [self.cache invalidate];
         }
     }
-    if(self.response.statusCode == kHTTPNotModifiedSuccessCode)
+    if(response.statusCode == kHTTPNotModifiedSuccessCode)
     {
         [self receiveDataFromCache];
     }
@@ -194,34 +153,32 @@ NSInteger const kHTTPNotModifiedSuccessCode = 304;
 {
     if(self.isCancelled)
     {
-        [self finish];
+        [self finishWithError:nil];
         return;
     }
     
-    if(!self.isContentInfoRequest)
+    if(!self.loadingRequest.isMetadataRequest)
     {
         //Cache to filesystem only data request
-        [self.cache writeDataToCache:data withOffset:self.currentLocation];
-        self.currentLocation += data.length;
+        [self.cache writeDataToCache:data withOffset:[self.loadingRequest currentLocation]];
     }
+    [self.loadingRequest fillWithData:data];
     
     if(self.isCancelled)
     {
-        [self finish];
+        [self finishWithError:nil];
         return;
     }
-    [self.resourceLoadingRequest.dataRequest respondWithData:data];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    [self finish];
+    [self finishWithError:nil];
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
-    [self.resourceLoadingRequest finishLoadingWithError:error];
-    [self finish];
+    [self finishWithError:error];
 }
 
 @end

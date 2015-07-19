@@ -9,6 +9,7 @@
 #import "FUZMP4LoaderDelegate.h"
 #import "FUZLoadingOperation.h"
 #import "FUZCacheEntity.h"
+#import "FUZPartialLoadingRequest.h"
 
 @interface FUZMP4LoaderDelegate ()
 
@@ -45,9 +46,14 @@
 - (BOOL)resourceLoader:(AVAssetResourceLoader *)resourceLoader shouldWaitForLoadingOfRequestedResource:(AVAssetResourceLoadingRequest *)loadingRequest
 {
     [self.currentLoadingOperation cancel];
+    
+    FUZPartialLoadingRequest *partialRequest = [FUZPartialLoadingRequest new];
+    [partialRequest setupWithResourceLoadingRequest:loadingRequest];
+    
     self.currentLoadingOperation = [FUZLoadingOperation new];
-    self.currentLoadingOperation.resourceLoadingRequest = loadingRequest;
     self.currentLoadingOperation.cache = self.cache;
+    self.currentLoadingOperation.loadingRequest = partialRequest;
+    
     [self.operationQueue addOperation:self.currentLoadingOperation];
     return YES;
 }
@@ -56,7 +62,7 @@
 {
     for(FUZLoadingOperation *op in self.operationQueue.operations)
     {
-        if(op.resourceLoadingRequest == loadingRequest)
+        if([op.loadingRequest conformsToResourceLoadingRequest:loadingRequest])
         {
             [op cancel];
         }

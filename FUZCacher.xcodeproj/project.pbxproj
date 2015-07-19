@@ -18,6 +18,7 @@
 		6F49BAF71B5C092D007B9DF4 /* FUZFileHandleSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F49BAF61B5C092D007B9DF4 /* FUZFileHandleSpec.m */; };
 		6F49BAFA1B5C0EB4007B9DF4 /* FUZPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F49BAF91B5C0EB4007B9DF4 /* FUZPlayerView.m */; };
 		6F49BB001B5C1C5D007B9DF4 /* FUZMP4LoaderDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F49BAFF1B5C1C5D007B9DF4 /* FUZMP4LoaderDelegate.m */; };
+		6F49BB091B5C28ED007B9DF4 /* FUZPartialLoadingRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F49BB081B5C28ED007B9DF4 /* FUZPartialLoadingRequest.m */; };
 		6F736A9E1B58370A00335122 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F736A9D1B58370A00335122 /* main.m */; };
 		6F736AA11B58370A00335122 /* FUZAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F736AA01B58370A00335122 /* FUZAppDelegate.m */; };
 		6F736AA71B58370A00335122 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F736AA51B58370A00335122 /* Main.storyboard */; };
@@ -63,6 +64,8 @@
 		6F49BAF91B5C0EB4007B9DF4 /* FUZPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUZPlayerView.m; sourceTree = "<group>"; };
 		6F49BAFE1B5C1C5D007B9DF4 /* FUZMP4LoaderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUZMP4LoaderDelegate.h; sourceTree = "<group>"; };
 		6F49BAFF1B5C1C5D007B9DF4 /* FUZMP4LoaderDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUZMP4LoaderDelegate.m; sourceTree = "<group>"; };
+		6F49BB071B5C28ED007B9DF4 /* FUZPartialLoadingRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUZPartialLoadingRequest.h; sourceTree = "<group>"; };
+		6F49BB081B5C28ED007B9DF4 /* FUZPartialLoadingRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUZPartialLoadingRequest.m; sourceTree = "<group>"; };
 		6F736A981B58370A00335122 /* FUZCacher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FUZCacher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F736A9C1B58370A00335122 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F736A9D1B58370A00335122 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -205,6 +208,8 @@
 				6F09BC5D1B5AAFC7000B57F2 /* FUZFileHandle.m */,
 				6F4796F51B5B917800340B80 /* FUZCache.h */,
 				6F4796F61B5B917800340B80 /* FUZCache.m */,
+				6F49BB071B5C28ED007B9DF4 /* FUZPartialLoadingRequest.h */,
+				6F49BB081B5C28ED007B9DF4 /* FUZPartialLoadingRequest.m */,
 			);
 			path = FUZCacher;
 			sourceTree = "<group>";
@@ -424,6 +429,7 @@
 				6F09BC5E1B5AAFC7000B57F2 /* FUZFileHandle.m in Sources */,
 				6F09BC4F1B5A5FB2000B57F2 /* NSURL+FUZScheme.m in Sources */,
 				6F4796F71B5B917800340B80 /* FUZCache.m in Sources */,
+				6F49BB091B5C28ED007B9DF4 /* FUZPartialLoadingRequest.m in Sources */,
 				6FE8E1611B59938200B25498 /* FUZCacheEntity.m in Sources */,
 				6F736AC61B583CA600335122 /* FUZPlayerViewController.m in Sources */,
 				6F09BC4C1B5A5C82000B57F2 /* FUZLoadingOperation.m in Sources */,
