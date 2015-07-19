@@ -7,16 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <AVFoundation/AVFoundation.h>
-
-typedef NS_ENUM(NSInteger, FUZRemoteVideoPlayerState)
-{
-    FUZRemoteVideoPlayerStateUnknown = 0,
-    FUZRemoteVideoPlayerStatePlaying,
-    FUZRemoteVideoPlayerStateBuffering,
-    FUZRemoteVideoPlayerStateStopped,
-    FUZRemoteVideoPlayerStateEnded
-};
 
 @interface FUZRemoteVideoPlayer : NSObject  <AVAssetResourceLoaderDelegate>
 
@@ -24,6 +14,12 @@ typedef NS_ENUM(NSInteger, FUZRemoteVideoPlayerState)
 
 - (void)setupWithVideoUrl:(NSURL *)videoUrl;
 - (void)play;
-- (void)reload;
+- (void)pause;
+- (void)restart;
+- (void)seekToTime:(CMTime)time;
+- (BOOL)isPlaying;
+
+- (Float64)currentTimeInSeconds;
+- (Float64)durationInSeconds;
 
 @end

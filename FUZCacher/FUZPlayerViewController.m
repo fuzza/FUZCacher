@@ -8,53 +8,91 @@
 
 #import "FUZPlayerViewController.h"
 #import "FUZRemoteVideoPlayer.h"
+#import "FUZPlayerView.h"
 
 @interface FUZPlayerViewController ()
 
-@property (nonatomic, strong) FUZRemoteVideoPlayer *remoteVideoPlayer;
-@property (nonatomic, strong) UISlider *timeSlider;
+@property (nonatomic, weak) IBOutlet UISlider *timeSlider;
+@property (nonatomic, weak) IBOutlet FUZPlayerView *playerView;
+@property (nonatomic, weak) IBOutlet UIButton *playButton;
 
-@property (nonatomic, strong) AVPlayerLayer *playerLayer;
+@property (nonatomic, strong) FUZRemoteVideoPlayer *remoteVideoPlayer;
+@property (nonatomic, strong) NSTimer *sliderTimer;
 
 @end
 
 @implementation FUZPlayerViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-
-//    @"http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/sl.m3u8";
-
-    NSString *urlString =@"http://sample-videos.com/video/mp4/360/big_buck_bunny_360p_20mb.mp4";
+    NSString *urlString = @"http://sample-videos.com/video/mp4/360/big_buck_bunny_360p_20mb.mp4";
+    
     NSURL *videoUrl = [NSURL URLWithString:urlString];
     
     [self setupRemotePlayerWithURL:videoUrl];
-    [self.remoteVideoPlayer play];
+    [self setupSlider];
 }
 
-- (void)viewWillLayoutSubviews {
-    [super viewWillLayoutSubviews];
-    self.playerLayer.frame = self.view.bounds;
-}
-
-- (void)setupRemotePlayerWithURL:(NSURL *)videoUrl {
+- (void)setupRemotePlayerWithURL:(NSURL *)videoUrl
+{
     self.remoteVideoPlayer = [[FUZRemoteVideoPlayer alloc] init];
     [self.remoteVideoPlayer setupWithVideoUrl:videoUrl];
-    
     [self setupPlayerView];
 }
 
-- (void)setupPlayerView {
-    self.playerLayer = self.remoteVideoPlayer.playerLayer;
-    [self.view.layer addSublayer:self.playerLayer];
-    [self.view setNeedsLayout];
+- (void)setupPlayerView
+{
+    [self.playerView setupWithPlayerLayer:self.remoteVideoPlayer.playerLayer];
+    [self.playerView setNeedsLayout];
+}
+
+#pragma mark - Slider
+
+- (void)setupSlider
+{
+    self.sliderTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
+                                                         target:self
+                                                       selector:@selector(updateUI)
+                                                       userInfo:nil
+                                                        repeats:YES];
+    [self updateUI];
+    self.timeSlider.continuous = YES;
+}
+
+- (void)updateUI
+{
+    self.timeSlider.maximumValue = [self.remoteVideoPlayer durationInSeconds] > 0 ? [self.remoteVideoPlayer durationInSeconds] : 1;
+    self.timeSlider.value = [self.remoteVideoPlayer currentTimeInSeconds];
+    self.playButton.selected = [self.remoteVideoPlayer isPlaying];
 }
 
 #pragma mark - IBActions
 
-- (IBAction)resetButtonDidTap:(UIButton *)sender {
-    [self.remoteVideoPlayer reload];
+- (IBAction)startButtonDidTap:(UIButton *)sender
+{
+    if([self.remoteVideoPlayer isPlaying])
+    {
+        [self.remoteVideoPlayer pause];
+    }
+    else
+    {
+        [self.remoteVideoPlayer play];
+    }
+    [self updateUI];
+}
+
+- (IBAction)resetButtonDidTap:(UIButton *)sender
+{
+    [self.remoteVideoPlayer restart];
     [self setupPlayerView];
     [self.remoteVideoPlayer play];
 }
+
+- (IBAction)timeSliderDidChange:(UISlider *)sender
+{
+    CMTime newTime = CMTimeMakeWithSeconds(sender.value, 1);
+    [self.remoteVideoPlayer seekToTime:newTime];
+}
+
 @end

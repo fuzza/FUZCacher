@@ -18,19 +18,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NPf-Yi-dtw" customClass="FUZPlayerView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="488"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r3e-H1-68t">
                                 <rect key="frame" x="0.0" y="488" width="320" height="80"/>
                                 <subviews>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="lzZ-dP-SCu">
                                         <rect key="frame" x="23" y="40" width="274" height="31"/>
+                                        <connections>
+                                            <action selector="timeSliderDidChange:" destination="vXZ-lx-hvc" eventType="valueChanged" id="KMb-Ep-t37"/>
+                                        </connections>
                                     </slider>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wq5-Tt-x3P">
-                                        <rect key="frame" x="25" y="8" width="48" height="30"/>
-                                        <state key="normal" title="RESET">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wq5-Tt-x3P">
+                                        <rect key="frame" x="25" y="8" width="78" height="34"/>
+                                        <state key="normal" title="RESTART">
+                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="resetButtonDidTap:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="4nb-NF-pQW"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="seO-Xf-bin">
+                                        <rect key="frame" x="240" y="8" width="55" height="34"/>
+                                        <state key="normal" title="START">
+                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="selected" title="STOP">
+                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="startButtonDidTap:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="yzb-JB-VML"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -39,6 +60,8 @@
                                     <constraint firstAttribute="trailing" secondItem="lzZ-dP-SCu" secondAttribute="trailing" constant="25" id="27B-QM-a9Q"/>
                                     <constraint firstItem="Wq5-Tt-x3P" firstAttribute="top" secondItem="r3e-H1-68t" secondAttribute="top" constant="8" id="2H6-vn-vOh"/>
                                     <constraint firstAttribute="height" constant="80" id="W3P-8X-1Tn"/>
+                                    <constraint firstAttribute="trailing" secondItem="seO-Xf-bin" secondAttribute="trailing" constant="25" id="b5i-bq-7FU"/>
+                                    <constraint firstItem="seO-Xf-bin" firstAttribute="top" secondItem="r3e-H1-68t" secondAttribute="top" constant="8" id="o16-S3-nKO"/>
                                     <constraint firstAttribute="bottom" secondItem="lzZ-dP-SCu" secondAttribute="bottom" constant="10" id="rTd-kD-z8G"/>
                                     <constraint firstItem="lzZ-dP-SCu" firstAttribute="leading" secondItem="r3e-H1-68t" secondAttribute="leading" constant="25" id="vPE-bo-nll"/>
                                     <constraint firstItem="Wq5-Tt-x3P" firstAttribute="leading" secondItem="r3e-H1-68t" secondAttribute="leading" constant="25" id="zwB-2P-COR"/>
@@ -48,12 +71,21 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="r3e-H1-68t" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="0Zp-S6-xox"/>
+                            <constraint firstItem="NPf-Yi-dtw" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="Ki8-VJ-hxs"/>
+                            <constraint firstAttribute="trailing" secondItem="NPf-Yi-dtw" secondAttribute="trailing" id="Qje-qt-yGj"/>
                             <constraint firstAttribute="trailing" secondItem="r3e-H1-68t" secondAttribute="trailing" id="RNZ-Ky-L50"/>
                             <constraint firstAttribute="bottomMargin" secondItem="r3e-H1-68t" secondAttribute="bottom" id="Rjd-xz-tVb"/>
+                            <constraint firstItem="r3e-H1-68t" firstAttribute="top" secondItem="NPf-Yi-dtw" secondAttribute="bottom" id="aTM-ZE-ayA"/>
+                            <constraint firstItem="NPf-Yi-dtw" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="vtA-w0-ebg"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="playButton" destination="seO-Xf-bin" id="Zpt-3x-T4g"/>
+                        <outlet property="playerView" destination="NPf-Yi-dtw" id="KhF-87-8ZW"/>
+                        <outlet property="timeSlider" destination="lzZ-dP-SCu" id="hv1-je-DYz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>

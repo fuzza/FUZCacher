@@ -10,17 +10,20 @@
 #import "NSURL+FUZScheme.h"
 #import "FUZCache.h"
 
+NSString * const kPlaybackLikelyToKeepUpKey = @"playbackLikelyToKeepUp";
+
 @interface FUZRemoteVideoPlayer () <AVAssetResourceLoaderDelegate>
 
 @property (nonatomic, strong) NSOperationQueue *operationQueue;
+@property (nonatomic, strong) FUZCache *playerCache;
+@property (nonatomic, strong) FUZLoadingOperation *currentOperation;
 
 @property (nonatomic, strong) AVPlayer *videoPlayer;
 @property (nonatomic, strong, readwrite) AVPlayerLayer *playerLayer;
 @property (nonatomic, strong, readonly) AVPlayerItem *currentItem;
-@property (nonatomic, strong) NSURL *currentURL;
+@property (nonatomic, assign, readwrite, getter=isPlaying) BOOL playing;
 
-@property (nonatomic, strong) FUZLoadingOperation *currentOperation;
-@property (nonatomic, strong) FUZCache *playerCache;
+@property (nonatomic, strong) NSURL *currentURL;
 
 @end
 
@@ -56,16 +59,21 @@
     AVPlayerItem *playerItem = [AVPlayerItem playerItemWithAsset:asset];
     self.videoPlayer = [[AVPlayer alloc] initWithPlayerItem:playerItem];
     self.playerLayer = [AVPlayerLayer playerLayerWithPlayer:self.videoPlayer];
-    
-    [self.videoPlayer play];
 }
 
 - (void)play
 {
     [self.videoPlayer play];
+    self.playing = YES;
 }
 
-- (void)reload
+- (void)pause
+{
+    [self.videoPlayer pause];
+    self.playing = NO;
+}
+
+- (void)restart
 {
     [self.operationQueue cancelAllOperations];
     [self.videoPlayer pause];
@@ -95,7 +103,7 @@
 - (void)setupPlayerObserving
 {
     [self.currentItem addObserver:self
-                       forKeyPath:NSStringFromSelector(@selector(playbackLikelyToKeepUp))
+                       forKeyPath:kPlaybackLikelyToKeepUpKey
                           options:NSKeyValueObservingOptionInitial | NSKeyValueObservingOptionNew
                           context:(void *)self];
 }
@@ -103,7 +111,7 @@
 - (void)resetPlayerObserving
 {
     [self.currentItem removeObserver:self
-                          forKeyPath:NSStringFromSelector(@selector(playbackLikelyToKeepUp))
+                          forKeyPath:kPlaybackLikelyToKeepUpKey
                              context:(void *)self];
 }
 
@@ -112,7 +120,7 @@
                         change:(NSDictionary *)change
                        context:(void *)context
 {
-    if([keyPath isEqualToString:NSStringFromSelector(@selector(playbackLikelyToKeepUp))])
+    if([keyPath isEqualToString:kPlaybackLikelyToKeepUpKey])
     {
         [self playbackLikelyToKeepUpDidChanged];
     }
@@ -122,7 +130,8 @@
 {
     if(!self.currentItem.playbackLikelyToKeepUp &&
        CMTIME_COMPARE_INLINE(self.videoPlayer.currentTime, > ,kCMTimeZero) &&
-       CMTIME_COMPARE_INLINE(self.videoPlayer.currentTime, !=, self.currentItem.duration))
+       CMTIME_COMPARE_INLINE(self.videoPlayer.currentTime, !=, self.currentItem.duration) &&
+       self.isPlaying)
     {
         [self play];
     }
@@ -131,6 +140,23 @@
 - (AVPlayerItem *)currentItem
 {
     return self.videoPlayer.currentItem;
+}
+
+- (void)seekToTime:(CMTime)time
+{
+    [self.videoPlayer seekToTime:time];
+}
+
+- (Float64)currentTimeInSeconds
+{
+    Float64 time = CMTimeGetSeconds([self.videoPlayer currentTime]);
+    return time;
+}
+
+- (Float64)durationInSeconds
+{
+    Float64 dur = CMTimeGetSeconds(self.currentItem.duration);
+    return dur;
 }
 
 #pragma mark - AVAssetResourceLoaderDelegate
