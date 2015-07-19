@@ -8,6 +8,7 @@
 #import "FUZRemoteVideoPlayer.h"
 #import "FUZLoadingOperation.h"
 #import "NSURL+FUZScheme.h"
+#import "FUZMP4LoaderDelegate.h"
 #import "FUZCache.h"
 
 NSString * const kPlaybackLikelyToKeepUpKey = @"playbackLikelyToKeepUp";
@@ -24,6 +25,7 @@ NSString * const kPlaybackLikelyToKeepUpKey = @"playbackLikelyToKeepUp";
 @property (nonatomic, assign, readwrite, getter=isPlaying) BOOL playing;
 
 @property (nonatomic, strong) NSURL *currentURL;
+@property (nonatomic, strong) FUZMP4LoaderDelegate *loader;
 
 @end
 
@@ -34,8 +36,6 @@ NSString * const kPlaybackLikelyToKeepUpKey = @"playbackLikelyToKeepUp";
     self = [super init];
     if(self)
     {
-        self.operationQueue = [[NSOperationQueue alloc] init];
-        self.operationQueue.maxConcurrentOperationCount = 1;
         self.playerCache = [[FUZCache alloc] init];
     }
     return self;
@@ -49,7 +49,12 @@ NSString * const kPlaybackLikelyToKeepUpKey = @"playbackLikelyToKeepUp";
     if([videoUrl.pathExtension isEqualToString:@"mp4"])
     {
         asset = [AVURLAsset URLAssetWithURL:[videoUrl fuz_urlWithScheme:@"streaming"] options:nil];
-        [asset.resourceLoader setDelegate:self queue:dispatch_get_main_queue()];
+        
+        FUZCacheEntity *cache = [self.playerCache cacheEntityForURL:self.currentURL];
+        
+        self.loader = [[FUZMP4LoaderDelegate alloc] init];
+        [self.loader setupWithCache:cache];
+        [asset.resourceLoader setDelegate:self.loader queue:dispatch_get_main_queue()];
     }
     else
     {
@@ -157,30 +162,6 @@ NSString * const kPlaybackLikelyToKeepUpKey = @"playbackLikelyToKeepUp";
 {
     Float64 dur = CMTimeGetSeconds(self.currentItem.duration);
     return dur;
-}
-
-#pragma mark - AVAssetResourceLoaderDelegate
-
-- (BOOL)resourceLoader:(AVAssetResourceLoader *)resourceLoader shouldWaitForLoadingOfRequestedResource:(AVAssetResourceLoadingRequest *)loadingRequest
-{
-    [self.currentOperation cancel];
-    self.currentOperation = [FUZLoadingOperation new];
-    self.currentOperation.resourceLoadingRequest = loadingRequest;
-    self.currentOperation.cache = [self.playerCache cacheEntityForURL:self.currentURL];
-    
-    [self.operationQueue addOperation:self.currentOperation];
-    return YES;
-}
-
-- (void)resourceLoader:(AVAssetResourceLoader *)resourceLoader didCancelLoadingRequest:(AVAssetResourceLoadingRequest *)loadingRequest
-{
-    for(FUZLoadingOperation *op in self.operationQueue.operations)
-    {
-        if(op.resourceLoadingRequest == loadingRequest)
-        {
-            [op cancel];
-        }
-    }
 }
 
 @end

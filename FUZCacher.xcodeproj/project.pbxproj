@@ -17,6 +17,7 @@
 		6F49BAF51B5C041C007B9DF4 /* NSDIctionary+FUZHTTPHeadersSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F49BAF41B5C041C007B9DF4 /* NSDIctionary+FUZHTTPHeadersSpec.m */; };
 		6F49BAF71B5C092D007B9DF4 /* FUZFileHandleSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F49BAF61B5C092D007B9DF4 /* FUZFileHandleSpec.m */; };
 		6F49BAFA1B5C0EB4007B9DF4 /* FUZPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F49BAF91B5C0EB4007B9DF4 /* FUZPlayerView.m */; };
+		6F49BB001B5C1C5D007B9DF4 /* FUZMP4LoaderDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F49BAFF1B5C1C5D007B9DF4 /* FUZMP4LoaderDelegate.m */; };
 		6F736A9E1B58370A00335122 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F736A9D1B58370A00335122 /* main.m */; };
 		6F736AA11B58370A00335122 /* FUZAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F736AA01B58370A00335122 /* FUZAppDelegate.m */; };
 		6F736AA71B58370A00335122 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F736AA51B58370A00335122 /* Main.storyboard */; };
@@ -60,6 +61,8 @@
 		6F49BAF61B5C092D007B9DF4 /* FUZFileHandleSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUZFileHandleSpec.m; sourceTree = "<group>"; };
 		6F49BAF81B5C0EB4007B9DF4 /* FUZPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUZPlayerView.h; sourceTree = "<group>"; };
 		6F49BAF91B5C0EB4007B9DF4 /* FUZPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUZPlayerView.m; sourceTree = "<group>"; };
+		6F49BAFE1B5C1C5D007B9DF4 /* FUZMP4LoaderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUZMP4LoaderDelegate.h; sourceTree = "<group>"; };
+		6F49BAFF1B5C1C5D007B9DF4 /* FUZMP4LoaderDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUZMP4LoaderDelegate.m; sourceTree = "<group>"; };
 		6F736A981B58370A00335122 /* FUZCacher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FUZCacher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F736A9C1B58370A00335122 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F736A9D1B58370A00335122 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -127,14 +130,40 @@
 		6F09BC5F1B5AB7A9000B57F2 /* Player */ = {
 			isa = PBXGroup;
 			children = (
-				6F736AC41B583CA600335122 /* FUZPlayerViewController.h */,
-				6F736AC51B583CA600335122 /* FUZPlayerViewController.m */,
 				6F736AC91B583FD900335122 /* FUZRemoteVideoPlayer.h */,
 				6F736ACA1B583FD900335122 /* FUZRemoteVideoPlayer.m */,
+			);
+			name = Player;
+			sourceTree = "<group>";
+		};
+		6F49BAFB1B5C1C10007B9DF4 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				6F736AC41B583CA600335122 /* FUZPlayerViewController.h */,
+				6F736AC51B583CA600335122 /* FUZPlayerViewController.m */,
 				6F49BAF81B5C0EB4007B9DF4 /* FUZPlayerView.h */,
 				6F49BAF91B5C0EB4007B9DF4 /* FUZPlayerView.m */,
 			);
-			name = Player;
+			name = UI;
+			sourceTree = "<group>";
+		};
+		6F49BAFC1B5C1C27007B9DF4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6F736AA51B58370A00335122 /* Main.storyboard */,
+				6F736AA81B58370A00335122 /* Images.xcassets */,
+				6F736AAA1B58370A00335122 /* LaunchScreen.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		6F49BAFD1B5C1C42007B9DF4 /* ResourceLoader */ = {
+			isa = PBXGroup;
+			children = (
+				6F49BAFE1B5C1C5D007B9DF4 /* FUZMP4LoaderDelegate.h */,
+				6F49BAFF1B5C1C5D007B9DF4 /* FUZMP4LoaderDelegate.m */,
+			);
+			name = ResourceLoader;
 			sourceTree = "<group>";
 		};
 		6F736A8F1B58370A00335122 = {
@@ -160,13 +189,13 @@
 		6F736A9A1B58370A00335122 /* FUZCacher */ = {
 			isa = PBXGroup;
 			children = (
+				6F49BAFD1B5C1C42007B9DF4 /* ResourceLoader */,
+				6F49BAFC1B5C1C27007B9DF4 /* Resources */,
+				6F49BAFB1B5C1C10007B9DF4 /* UI */,
 				6F09BC5F1B5AB7A9000B57F2 /* Player */,
 				6F09BC521B5A61EC000B57F2 /* Utils */,
 				6F736A9F1B58370A00335122 /* FUZAppDelegate.h */,
 				6F736AA01B58370A00335122 /* FUZAppDelegate.m */,
-				6F736AA51B58370A00335122 /* Main.storyboard */,
-				6F736AA81B58370A00335122 /* Images.xcassets */,
-				6F736AAA1B58370A00335122 /* LaunchScreen.xib */,
 				6F736A9B1B58370A00335122 /* Supporting Files */,
 				6FE8E15F1B59938200B25498 /* FUZCacheEntity.h */,
 				6FE8E1601B59938200B25498 /* FUZCacheEntity.m */,
@@ -390,6 +419,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F736AA11B58370A00335122 /* FUZAppDelegate.m in Sources */,
+				6F49BB001B5C1C5D007B9DF4 /* FUZMP4LoaderDelegate.m in Sources */,
 				6F09BC5B1B5AAABB000B57F2 /* NSDictionary+FUZHTTPHeaders.m in Sources */,
 				6F09BC5E1B5AAFC7000B57F2 /* FUZFileHandle.m in Sources */,
 				6F09BC4F1B5A5FB2000B57F2 /* NSURL+FUZScheme.m in Sources */,
