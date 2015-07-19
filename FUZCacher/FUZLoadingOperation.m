@@ -59,17 +59,18 @@ NSInteger const kHTTPNotModifiedSuccessCode = 304;
 
 - (void)finish
 {
-    self.loaded = YES;    
-    if(!self.resourceLoadingRequest.isFinished)
-    {
-        [self.resourceLoadingRequest finishLoading];
-    }
-    
     if(self.connection)
     {
         [self.connection cancel];
         self.connection = nil;
     }
+    self.loaded = YES;
+    
+    if(!self.resourceLoadingRequest.isFinished)
+    {
+        [self.resourceLoadingRequest finishLoading];
+    }
+
     self.executing = NO;
     self.finished = YES;
 }
@@ -117,19 +118,16 @@ NSInteger const kHTTPNotModifiedSuccessCode = 304;
     if(self.isReadFromCache)
     {
         NSString *modifiedSince = [[self.cache copyResponseFromCache].allHeaderFields fuz_responseLastModifiedValue];
-        [request setValue:modifiedSince forHTTPHeaderField:@"If-Modified-Since"];
+        [request setValue:modifiedSince forHTTPHeaderField:kIfModifiedSinceHeaderKey];
     }
     
     NSLog(@"%@", request.allHTTPHeaderFields);
-    
     
     NSRunLoop *currentRunLoop = [NSRunLoop currentRunLoop];
     self.connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:NO];
     [self.connection scheduleInRunLoop:currentRunLoop forMode:NSRunLoopCommonModes];
     [self.connection start];
-    while ((!self.isLoaded) &&
-           ([currentRunLoop runMode:NSDefaultRunLoopMode beforeDate:[NSDate
-                                                           distantFuture]]))
+    while (!self.isLoaded && [currentRunLoop runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]])
     {
     }
 }
@@ -212,9 +210,7 @@ NSInteger const kHTTPNotModifiedSuccessCode = 304;
         [self finish];
         return;
     }
-//    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.resourceLoadingRequest.dataRequest respondWithData:data];
-//    });
+    [self.resourceLoadingRequest.dataRequest respondWithData:data];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection

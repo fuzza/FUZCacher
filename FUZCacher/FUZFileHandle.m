@@ -20,14 +20,23 @@
 
 - (instancetype)initWithPath:(NSString *)path
 {
+    if(!path)
+    {
+        return nil;
+    }
+    
     self = [super init];
     if(self)
     {
         _path = path;
-        [self setupWriteHandle];
-        [self setupReadHandle];
     }
     return self;
+}
+
+- (void)open
+{
+    [self setupWriteHandle];
+    [self setupReadHandle];
 }
 
 - (void)dealloc
@@ -83,13 +92,11 @@
 {
     if(!self.readHandle)
     {
-        return;
+        [self setupReadHandle];
     }
     
     [self.readHandle seekToFileOffset:startOffset];
-
     BOOL stop = NO;
-    
     NSInteger remainingLength = length;
     do
     {

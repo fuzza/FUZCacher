@@ -54,9 +54,9 @@ NSString *const kFUZCacheEntityRangesKey = @"kFUZCacheEntityRangesKey";
 - (void)invalidate
 {
     [self.fileHandle invalidate];
+    self.fileHandle = nil;
     self.cachedResponse = nil;
     self.ranges = nil;
-    self.fileHandle = [[FUZFileHandle alloc] initWithPath:self.filePath];
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
@@ -178,6 +178,7 @@ NSString *const kFUZCacheEntityRangesKey = @"kFUZCacheEntityRangesKey";
     if(!_fileHandle)
     {
         _fileHandle = [[FUZFileHandle alloc] initWithPath:self.filePath];
+        [_fileHandle open];
     }
     return _fileHandle;
 }

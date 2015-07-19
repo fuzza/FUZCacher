@@ -14,6 +14,8 @@
 		6F09BC5B1B5AAABB000B57F2 /* NSDictionary+FUZHTTPHeaders.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F09BC5A1B5AAABB000B57F2 /* NSDictionary+FUZHTTPHeaders.m */; };
 		6F09BC5E1B5AAFC7000B57F2 /* FUZFileHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F09BC5D1B5AAFC7000B57F2 /* FUZFileHandle.m */; };
 		6F4796F71B5B917800340B80 /* FUZCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F4796F61B5B917800340B80 /* FUZCache.m */; };
+		6F49BAF51B5C041C007B9DF4 /* NSDIctionary+FUZHTTPHeadersSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F49BAF41B5C041C007B9DF4 /* NSDIctionary+FUZHTTPHeadersSpec.m */; };
+		6F49BAF71B5C092D007B9DF4 /* FUZFileHandleSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F49BAF61B5C092D007B9DF4 /* FUZFileHandleSpec.m */; };
 		6F49BAFA1B5C0EB4007B9DF4 /* FUZPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F49BAF91B5C0EB4007B9DF4 /* FUZPlayerView.m */; };
 		6F736A9E1B58370A00335122 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F736A9D1B58370A00335122 /* main.m */; };
 		6F736AA11B58370A00335122 /* FUZAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F736AA01B58370A00335122 /* FUZAppDelegate.m */; };
@@ -54,6 +56,8 @@
 		6F4796F41B5B8E8900340B80 /* PrefixHeader-Tests.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PrefixHeader-Tests.pch"; sourceTree = "<group>"; };
 		6F4796F51B5B917800340B80 /* FUZCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUZCache.h; sourceTree = "<group>"; };
 		6F4796F61B5B917800340B80 /* FUZCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUZCache.m; sourceTree = "<group>"; };
+		6F49BAF41B5C041C007B9DF4 /* NSDIctionary+FUZHTTPHeadersSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDIctionary+FUZHTTPHeadersSpec.m"; sourceTree = "<group>"; };
+		6F49BAF61B5C092D007B9DF4 /* FUZFileHandleSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUZFileHandleSpec.m; sourceTree = "<group>"; };
 		6F49BAF81B5C0EB4007B9DF4 /* FUZPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUZPlayerView.h; sourceTree = "<group>"; };
 		6F49BAF91B5C0EB4007B9DF4 /* FUZPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUZPlayerView.m; sourceTree = "<group>"; };
 		6F736A981B58370A00335122 /* FUZCacher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FUZCacher.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -191,6 +195,8 @@
 			children = (
 				6F736AB51B58370B00335122 /* Supporting Files */,
 				6F09BC501B5A6026000B57F2 /* NSURL+FUZSchemeSpec.m */,
+				6F49BAF41B5C041C007B9DF4 /* NSDIctionary+FUZHTTPHeadersSpec.m */,
+				6F49BAF61B5C092D007B9DF4 /* FUZFileHandleSpec.m */,
 			);
 			path = FUZCacherTests;
 			sourceTree = "<group>";
@@ -401,7 +407,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F49BAF51B5C041C007B9DF4 /* NSDIctionary+FUZHTTPHeadersSpec.m in Sources */,
 				6F09BC511B5A6026000B57F2 /* NSURL+FUZSchemeSpec.m in Sources */,
+				6F49BAF71B5C092D007B9DF4 /* FUZFileHandleSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

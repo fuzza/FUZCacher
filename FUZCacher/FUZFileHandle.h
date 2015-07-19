@@ -14,6 +14,9 @@ typedef void (^FUZFileBlockReadingCallback)(NSData *block, BOOL *stop);
 
 - (instancetype)initWithPath:(NSString *)path;
 
+- (void)open;
+- (void)close;
+
 - (void)invalidate;
 
 - (void)writeData:(NSData *)data

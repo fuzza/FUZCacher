@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString * const kRequestHeaderRangeKey;
+extern NSString * const kIfModifiedSinceHeaderKey;
+extern NSString * const kContentRangeHeaderKey;
+extern NSString * const kContentTypeHeaderKey;
+extern NSString * const kLastModifiedHeaderKey;
+
 @interface NSDictionary (FUZHTTPHeaders)
 
 - (NSRange)fuz_requestBytesRangeValue;
