@@ -6,9 +6,6 @@
 //  Copyright (c) 2015 fuzza. All rights reserved.
 //
 
-#import <Specta/Specta.h>
-#import <Expecta/Expecta.h>
-
 #import "NSURL+FUZScheme.h"
 
 SpecBegin(NSURL)

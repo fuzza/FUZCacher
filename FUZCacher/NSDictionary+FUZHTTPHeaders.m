@@ -7,7 +7,6 @@
 //
 
 #import "NSDictionary+FUZHTTPHeaders.h"
-@import MobileCoreServices;
 
 NSString * const kRequestHeaderRangeKey = @"Range";
 NSString * const kRequestHeaderRangeHeaderSeparator = @"=";

@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 fuzza. All rights reserved.
 //
 
-#import "FUZFileSystemService.h"
+#import "FUZFileHandle.h"
 
-@interface FUZFileSystemService ()
+@interface FUZFileHandle ()
 
 @property (nonatomic, strong) NSString *path;
 @property (nonatomic, strong) NSFileHandle *writeHandle;
@@ -16,7 +16,7 @@
 
 @end
 
-@implementation FUZFileSystemService
+@implementation FUZFileHandle
 
 - (instancetype)initWithPath:(NSString *)path
 {

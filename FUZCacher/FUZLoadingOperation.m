@@ -9,11 +9,11 @@
 #import "FUZLoadingOperation.h"
 #import "NSURL+FUZScheme.h"
 #import "NSDictionary+FUZHTTPHeaders.h"
-#import "FUZHTTPResponseCache.h"
-
-@import MobileCoreServices;
+#import "FUZCacheEntity.h"
 
 NSString *const kFUZDefaultScheme = @"http";
+NSInteger const kHTTPPartialRequestSuccessCode = 206;
+NSInteger const kHTTPNotModifiedSuccessCode = 304;
 
 @interface FUZLoadingOperation () <NSURLConnectionDelegate>
 
@@ -26,7 +26,7 @@ NSString *const kFUZDefaultScheme = @"http";
 @property (nonatomic, assign) NSRange requiredRange;
 @property (nonatomic, assign) NSInteger currentLocation;
 
-@property (nonatomic, assign) BOOL disableCaching;
+@property (nonatomic, assign, getter=isContentInfoRequest) BOOL contentInfoRequest;
 
 @end
 
@@ -46,51 +46,80 @@ NSString *const kFUZDefaultScheme = @"http";
         return;
     }
     
-    [self startExecuting];
-    
-    NSLog(@"%@", self.resourceLoadingRequest);
-    
-    BOOL canReadFromCache = [[FUZHTTPResponseCache sharedCache] canReadFromCacheWithOffset:self.currentLocation];
-    if(canReadFromCache)
+    self.executing = YES;
+
+    BOOL canReadFromCache = [self.cache canReadFromCacheWithOffset:self.currentLocation];
+    if(canReadFromCache && !self.isContentInfoRequest)
     {
-        self.resourceLoadingRequest.contentInformationRequest.contentType = (__bridge NSString *)(kUTTypeMPEG4);
-        self.resourceLoadingRequest.contentInformationRequest.contentLength = 21042737;
-        self.resourceLoadingRequest.contentInformationRequest.byteRangeAccessSupported = YES;
-        
-        [[FUZHTTPResponseCache sharedCache] readFromCacheFromOffset:self.requiredRange.location withLength:self.requiredRange.length cacheBlock:^(NSData *cacheBlock, BOOL isLastBlock, NSInteger totalCachedLength)
-         {
-             if(self.isCancelled)
-             {
-                 NSLog(@"%@ cancelled", self);
-                 [self.connection cancel];
-                 self.connection = nil;
-                 [self stopExecuting];
-                 return;
-             }
-             
-             [self.resourceLoadingRequest.dataRequest respondWithData:cacheBlock];
-             self.currentLocation += cacheBlock.length;
-         }];
-        
-        if(self.isCancelled)
-        {
-            return;
-        }
-        
-        [self.resourceLoadingRequest finishLoading];
-        [self stopExecuting];
+        [self receiveDataFromCache];
     }
     else
     {
-        NSMutableURLRequest *request = [self.resourceLoadingRequest.request mutableCopy];
-        NSLog(@"%@", request.allHTTPHeaderFields);
-        
-        request.URL = [request.URL fuz_urlWithScheme:kFUZDefaultScheme];
-        request.cachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
-        
-        self.connection = [NSURLConnection connectionWithRequest:request delegate:self];
-        [self.connection start];
+        [self receiveDataFromNetwork];
     }
+}
+
+- (void)finish
+{
+    if(self.connection)
+    {
+        [self.connection cancel];
+        self.connection = nil;
+    }
+    self.executing = NO;
+    self.finished = YES;
+}
+
+#pragma mark - Methods
+
+- (void)receiveDataFromCache
+{
+    if(self.isContentInfoRequest)
+    {
+        NSDictionary *cachedHeaders = [self.cache copyResponseFromCache].allHeaderFields;
+        [self setupContentInformationRequestWithResponseHeaders:cachedHeaders];
+    }
+    
+    @weakify(self);
+    [self.cache readFromCacheFromOffset:self.requiredRange.location withLength:self.requiredRange.length cacheBlock:^(NSData *cacheBlock)
+     {
+         @strongify(self);
+         if(self.isCancelled)
+         {
+             [self finish];
+             return;
+         }
+         
+         [self.resourceLoadingRequest.dataRequest respondWithData:cacheBlock];
+         self.currentLocation += cacheBlock.length;
+     }];
+    
+    if(self.isCancelled)
+    {
+        return;
+    }
+    
+    [self.resourceLoadingRequest finishLoading];
+    [self finish];
+}
+
+- (void)receiveDataFromNetwork
+{
+    NSMutableURLRequest *request = [self.resourceLoadingRequest.request mutableCopy];
+    NSLog(@"%@", request.allHTTPHeaderFields);
+    
+    request.URL = [request.URL fuz_urlWithScheme:kFUZDefaultScheme];
+    request.cachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
+    
+    self.connection = [NSURLConnection connectionWithRequest:request delegate:self];
+    [self.connection start];
+}
+
+- (void)setupContentInformationRequestWithResponseHeaders:(NSDictionary *)headers
+{
+    self.resourceLoadingRequest.contentInformationRequest.contentType = [headers fuz_responseUTIFromContentTypeValue];
+    self.resourceLoadingRequest.contentInformationRequest.contentLength = [headers fuz_responseContentRangeTotalLength];
+    self.resourceLoadingRequest.contentInformationRequest.byteRangeAccessSupported = YES;
 }
 
 #pragma mark - Mutators / Accessors
@@ -120,6 +149,7 @@ NSString *const kFUZDefaultScheme = @"http";
     
     self.requiredRange = NSMakeRange(self.resourceLoadingRequest.dataRequest.requestedOffset, self.resourceLoadingRequest.dataRequest.requestedLength);
     self.currentLocation = self.requiredRange.location;
+    self.contentInfoRequest = (self.resourceLoadingRequest.contentInformationRequest != nil);
 }
 
 #pragma mark - NSURLConnectionDelegate
@@ -127,68 +157,47 @@ NSString *const kFUZDefaultScheme = @"http";
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSHTTPURLResponse *)response
 {
     NSLog(@"%@", response);
-    dispatch_async(dispatch_get_main_queue(), ^()
+    self.response = response;
+    NSDictionary *headers = response.allHeaderFields;
+    
+    if(self.isContentInfoRequest && response.statusCode == kHTTPPartialRequestSuccessCode)
     {
-        self.resourceLoadingRequest.contentInformationRequest.contentType = [response.allHeaderFields fuz_responseUTIFromContentTypeValue];
-        self.resourceLoadingRequest.contentInformationRequest.contentLength = [response.allHeaderFields fuz_responseContentRangeTotalLength];
-        self.resourceLoadingRequest.contentInformationRequest.byteRangeAccessSupported = YES;
-    });
+        [self setupContentInformationRequestWithResponseHeaders:response.allHeaderFields];
+        [self.cache writeResponseToCache:response];
+    }
+    if(response.statusCode == kHTTPNotModifiedSuccessCode)
+    {
+        
+    }
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
     if(self.isCancelled)
     {
-        NSLog(@"%@ cancelled", self);
-        [self.connection cancel];
-        self.connection = nil;
-        [self stopExecuting];
+        [self finish];
         return;
     }
     
-    if(self.resourceLoadingRequest.contentInformationRequest == nil)
+    if(!self.isContentInfoRequest)
     {
-        //Won't cache content information request
-        [[FUZHTTPResponseCache sharedCache] writeDataToCache:data withOffset:self.currentLocation];
+        //Cache only data request
+        [self.cache writeDataToCache:data withOffset:self.currentLocation];
         self.currentLocation += data.length;
     }
-    
-    dispatch_async(dispatch_get_main_queue(), ^()
-                   {
-                       [self.resourceLoadingRequest.dataRequest respondWithData:data];
-                   });
+    [self.resourceLoadingRequest.dataRequest respondWithData:data];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    dispatch_async(dispatch_get_main_queue(), ^()
-                   {
-                       [self.resourceLoadingRequest finishLoading];
-                   });
-    
-    [self stopExecuting];
+    [self.resourceLoadingRequest finishLoading];
+    [self finish];
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
-    dispatch_async(dispatch_get_main_queue(), ^()
-                   {
-                       [self.resourceLoadingRequest finishLoadingWithError:error];
-                   });
-    
-    [self stopExecuting];
-}
-
-- (void)startExecuting
-{
-    self.finished = NO;
-    self.executing = YES;
-}
-
-- (void)stopExecuting
-{
-    self.executing = NO;
-    self.finished = YES;
+    [self.resourceLoadingRequest finishLoadingWithError:error];
+    [self finish];
 }
 
 @end

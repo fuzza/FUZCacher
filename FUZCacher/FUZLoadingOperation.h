@@ -7,10 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <AVFoundation/AVFoundation.h>
+
+@class FUZCacheEntity;
 
 @interface FUZLoadingOperation : NSOperation
 
 @property (nonatomic, strong) AVAssetResourceLoadingRequest *resourceLoadingRequest;
+@property (nonatomic, strong) FUZCacheEntity *cache;
 
 @end

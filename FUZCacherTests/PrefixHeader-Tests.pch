@@ -1,0 +1,15 @@
+//
+//  PrefixHeader-tests.pch
+//  FUZCacher
+//
+//  Created by fuzza on 7/19/15.
+//  Copyright (c) 2015 fuzza. All rights reserved.
+//
+
+#ifndef FUZCacher_PrefixHeader_tests_pch
+#define FUZCacher_PrefixHeader_tests_pch
+
+#import <Specta/Specta.h>
+#import <Expecta/Expecta.h>
+
+#endif

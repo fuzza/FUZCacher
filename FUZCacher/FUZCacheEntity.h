@@ -8,13 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void(^FUZHTTPResponseCacheBlock)(NSData *cacheBlock, BOOL isLastBlock, NSInteger totalCachedLength);
+typedef void(^FUZHTTPResponseCacheBlock)(NSData *cacheBlock);
 
-@interface FUZHTTPResponseCache : NSObject
+@interface FUZCacheEntity : NSObject <NSCoding>
 
-@property (nonatomic, strong) NSHTTPURLResponse *cachedResponse;
+- (instancetype)initWithURL:(NSURL *)url;
 
-+ (instancetype)sharedCache;
+- (void)writeResponseToCache:(NSHTTPURLResponse *)response;
+- (NSHTTPURLResponse *)copyResponseFromCache;
+
 - (void)writeDataToCache:(NSData *)data withOffset:(NSInteger)offset;
 - (BOOL)canReadFromCacheWithOffset:(NSInteger)offset;
 - (void)readFromCacheFromOffset:(NSInteger)offset withLength:(NSInteger)length cacheBlock:(FUZHTTPResponseCacheBlock)block;

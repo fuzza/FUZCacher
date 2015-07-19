@@ -8,6 +8,7 @@
 #import "FUZRemoteVideoPlayer.h"
 #import "FUZLoadingOperation.h"
 #import "NSURL+FUZScheme.h"
+#import "FUZCache.h"
 
 @interface FUZRemoteVideoPlayer () <AVAssetResourceLoaderDelegate>
 
@@ -19,6 +20,7 @@
 @property (nonatomic, strong) NSURL *currentURL;
 
 @property (nonatomic, strong) FUZLoadingOperation *currentOperation;
+@property (nonatomic, strong) FUZCache *playerCache;
 
 @end
 
@@ -31,6 +33,7 @@
     {
         self.operationQueue = [[NSOperationQueue alloc] init];
         self.operationQueue.maxConcurrentOperationCount = 1;
+        self.playerCache = [[FUZCache alloc] init];
     }
     return self;
 }
@@ -39,12 +42,19 @@
 {
     self.currentURL = videoUrl;
     
-    AVURLAsset *asset = [AVURLAsset URLAssetWithURL:[videoUrl fuz_urlWithScheme:@"streaming"] options:nil];
-    [asset.resourceLoader setDelegate:self queue:dispatch_get_main_queue()];
+    AVURLAsset *asset = nil;
+    if([videoUrl.pathExtension isEqualToString:@"mp4"])
+    {
+        asset = [AVURLAsset URLAssetWithURL:[videoUrl fuz_urlWithScheme:@"streaming"] options:nil];
+        [asset.resourceLoader setDelegate:self queue:dispatch_get_main_queue()];
+    }
+    else
+    {
+        asset = [AVURLAsset URLAssetWithURL:videoUrl options:nil];
+    }
 
     AVPlayerItem *playerItem = [AVPlayerItem playerItemWithAsset:asset];
     self.videoPlayer = [[AVPlayer alloc] initWithPlayerItem:playerItem];
-    
     self.playerLayer = [AVPlayerLayer playerLayerWithPlayer:self.videoPlayer];
     
     [self.videoPlayer play];
@@ -129,6 +139,8 @@
 {
     self.currentOperation = [FUZLoadingOperation new];
     self.currentOperation.resourceLoadingRequest = loadingRequest;
+    self.currentOperation.cache = [self.playerCache cacheEntityForURL:self.currentURL];
+    
     [self.operationQueue addOperation:self.currentOperation];
     return YES;
 }

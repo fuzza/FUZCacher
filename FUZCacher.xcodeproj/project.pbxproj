@@ -12,7 +12,8 @@
 		6F09BC4F1B5A5FB2000B57F2 /* NSURL+FUZScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F09BC4E1B5A5FB2000B57F2 /* NSURL+FUZScheme.m */; };
 		6F09BC511B5A6026000B57F2 /* NSURL+FUZSchemeSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F09BC501B5A6026000B57F2 /* NSURL+FUZSchemeSpec.m */; };
 		6F09BC5B1B5AAABB000B57F2 /* NSDictionary+FUZHTTPHeaders.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F09BC5A1B5AAABB000B57F2 /* NSDictionary+FUZHTTPHeaders.m */; };
-		6F09BC5E1B5AAFC7000B57F2 /* FUZFileSystemService.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F09BC5D1B5AAFC7000B57F2 /* FUZFileSystemService.m */; };
+		6F09BC5E1B5AAFC7000B57F2 /* FUZFileHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F09BC5D1B5AAFC7000B57F2 /* FUZFileHandle.m */; };
+		6F4796F71B5B917800340B80 /* FUZCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F4796F61B5B917800340B80 /* FUZCache.m */; };
 		6F736A9E1B58370A00335122 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F736A9D1B58370A00335122 /* main.m */; };
 		6F736AA11B58370A00335122 /* FUZAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F736AA01B58370A00335122 /* FUZAppDelegate.m */; };
 		6F736AA71B58370A00335122 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F736AA51B58370A00335122 /* Main.storyboard */; };
@@ -21,7 +22,7 @@
 		6F736AC61B583CA600335122 /* FUZPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F736AC51B583CA600335122 /* FUZPlayerViewController.m */; };
 		6F736AC81B583D4C00335122 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F736AC71B583D4C00335122 /* AVFoundation.framework */; };
 		6F736ACB1B583FD900335122 /* FUZRemoteVideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F736ACA1B583FD900335122 /* FUZRemoteVideoPlayer.m */; };
-		6FE8E1611B59938200B25498 /* FUZHTTPResponseCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FE8E1601B59938200B25498 /* FUZHTTPResponseCache.m */; };
+		6FE8E1611B59938200B25498 /* FUZCacheEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FE8E1601B59938200B25498 /* FUZCacheEntity.m */; };
 		C1DD82F471D7E04D909057CB /* libPods-FUZCacherTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4836D7959B1A8EB5276FF553 /* libPods-FUZCacherTests.a */; };
 /* End PBXBuildFile section */
 
@@ -46,8 +47,12 @@
 		6F09BC501B5A6026000B57F2 /* NSURL+FUZSchemeSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+FUZSchemeSpec.m"; sourceTree = "<group>"; };
 		6F09BC591B5AAABB000B57F2 /* NSDictionary+FUZHTTPHeaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+FUZHTTPHeaders.h"; sourceTree = "<group>"; };
 		6F09BC5A1B5AAABB000B57F2 /* NSDictionary+FUZHTTPHeaders.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+FUZHTTPHeaders.m"; sourceTree = "<group>"; };
-		6F09BC5C1B5AAFC7000B57F2 /* FUZFileSystemService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUZFileSystemService.h; sourceTree = "<group>"; };
-		6F09BC5D1B5AAFC7000B57F2 /* FUZFileSystemService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUZFileSystemService.m; sourceTree = "<group>"; };
+		6F09BC5C1B5AAFC7000B57F2 /* FUZFileHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUZFileHandle.h; sourceTree = "<group>"; };
+		6F09BC5D1B5AAFC7000B57F2 /* FUZFileHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUZFileHandle.m; sourceTree = "<group>"; };
+		6F0ABCE41B5B124D0029D242 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		6F4796F41B5B8E8900340B80 /* PrefixHeader-Tests.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PrefixHeader-Tests.pch"; sourceTree = "<group>"; };
+		6F4796F51B5B917800340B80 /* FUZCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUZCache.h; sourceTree = "<group>"; };
+		6F4796F61B5B917800340B80 /* FUZCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUZCache.m; sourceTree = "<group>"; };
 		6F736A981B58370A00335122 /* FUZCacher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FUZCacher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F736A9C1B58370A00335122 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F736A9D1B58370A00335122 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -63,8 +68,8 @@
 		6F736AC71B583D4C00335122 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		6F736AC91B583FD900335122 /* FUZRemoteVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUZRemoteVideoPlayer.h; sourceTree = "<group>"; };
 		6F736ACA1B583FD900335122 /* FUZRemoteVideoPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUZRemoteVideoPlayer.m; sourceTree = "<group>"; };
-		6FE8E15F1B59938200B25498 /* FUZHTTPResponseCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUZHTTPResponseCache.h; sourceTree = "<group>"; };
-		6FE8E1601B59938200B25498 /* FUZHTTPResponseCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUZHTTPResponseCache.m; sourceTree = "<group>"; };
+		6FE8E15F1B59938200B25498 /* FUZCacheEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUZCacheEntity.h; sourceTree = "<group>"; };
+		6FE8E1601B59938200B25498 /* FUZCacheEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUZCacheEntity.m; sourceTree = "<group>"; };
 		7069A2EAF5E7B2CF00BB87B4 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		AF5F4AA1278F4986CD603831 /* Pods-FUZCacherTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FUZCacherTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FUZCacherTests/Pods-FUZCacherTests.release.xcconfig"; sourceTree = "<group>"; };
 		BA60DDAE4E07503515EEC456 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,12 +159,14 @@
 				6F736AA81B58370A00335122 /* Images.xcassets */,
 				6F736AAA1B58370A00335122 /* LaunchScreen.xib */,
 				6F736A9B1B58370A00335122 /* Supporting Files */,
-				6FE8E15F1B59938200B25498 /* FUZHTTPResponseCache.h */,
-				6FE8E1601B59938200B25498 /* FUZHTTPResponseCache.m */,
+				6FE8E15F1B59938200B25498 /* FUZCacheEntity.h */,
+				6FE8E1601B59938200B25498 /* FUZCacheEntity.m */,
 				6F09BC4A1B5A5C82000B57F2 /* FUZLoadingOperation.h */,
 				6F09BC4B1B5A5C82000B57F2 /* FUZLoadingOperation.m */,
-				6F09BC5C1B5AAFC7000B57F2 /* FUZFileSystemService.h */,
-				6F09BC5D1B5AAFC7000B57F2 /* FUZFileSystemService.m */,
+				6F09BC5C1B5AAFC7000B57F2 /* FUZFileHandle.h */,
+				6F09BC5D1B5AAFC7000B57F2 /* FUZFileHandle.m */,
+				6F4796F51B5B917800340B80 /* FUZCache.h */,
+				6F4796F61B5B917800340B80 /* FUZCache.m */,
 			);
 			path = FUZCacher;
 			sourceTree = "<group>";
@@ -169,6 +176,7 @@
 			children = (
 				6F736A9C1B58370A00335122 /* Info.plist */,
 				6F736A9D1B58370A00335122 /* main.m */,
+				6F0ABCE41B5B124D0029D242 /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -186,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				6F736AB61B58370B00335122 /* Info.plist */,
+				6F4796F41B5B8E8900340B80 /* PrefixHeader-Tests.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -371,9 +380,10 @@
 			files = (
 				6F736AA11B58370A00335122 /* FUZAppDelegate.m in Sources */,
 				6F09BC5B1B5AAABB000B57F2 /* NSDictionary+FUZHTTPHeaders.m in Sources */,
-				6F09BC5E1B5AAFC7000B57F2 /* FUZFileSystemService.m in Sources */,
+				6F09BC5E1B5AAFC7000B57F2 /* FUZFileHandle.m in Sources */,
 				6F09BC4F1B5A5FB2000B57F2 /* NSURL+FUZScheme.m in Sources */,
-				6FE8E1611B59938200B25498 /* FUZHTTPResponseCache.m in Sources */,
+				6F4796F71B5B917800340B80 /* FUZCache.m in Sources */,
+				6FE8E1611B59938200B25498 /* FUZCacheEntity.m in Sources */,
 				6F736AC61B583CA600335122 /* FUZPlayerViewController.m in Sources */,
 				6F09BC4C1B5A5C82000B57F2 /* FUZLoadingOperation.m in Sources */,
 				6F736ACB1B583FD900335122 /* FUZRemoteVideoPlayer.m in Sources */,
@@ -504,9 +514,13 @@
 			baseConfigurationReference = 5487D24C3DA1B4A3EBDB5698 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Eugene Altynpara (CAP4W55C8H)";
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = FUZCacher/PrefixHeader.pch;
 				INFOPLIST_FILE = FUZCacher/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "0e4a4457-bc02-4f4e-8238-1f17aaedafaf";
@@ -518,8 +532,12 @@
 			baseConfigurationReference = 7069A2EAF5E7B2CF00BB87B4 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = FUZCacher/PrefixHeader.pch;
 				INFOPLIST_FILE = FUZCacher/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -534,6 +552,7 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
+				GCC_PREFIX_HEADER = "FUZCacherTests/PrefixHeader-Tests.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -554,6 +573,7 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
+				GCC_PREFIX_HEADER = "FUZCacherTests/PrefixHeader-Tests.pch";
 				INFOPLIST_FILE = FUZCacherTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -10,7 +10,7 @@
 
 typedef void (^FUZFileBlockReadingCallback)(NSData *block);
 
-@interface FUZFileSystemService : NSObject
+@interface FUZFileHandle : NSObject
 
 - (instancetype)initWithPath:(NSString *)path;
 
