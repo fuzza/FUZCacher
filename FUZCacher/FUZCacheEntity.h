@@ -8,11 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void(^FUZHTTPResponseCacheBlock)(NSData *cacheBlock);
+typedef void(^FUZHTTPResponseCacheBlock)(NSData *cacheBlock, BOOL *stop);
 
 @interface FUZCacheEntity : NSObject <NSCoding>
 
 - (instancetype)initWithURL:(NSURL *)url;
+
+- (void)invalidate;
 
 - (void)writeResponseToCache:(NSHTTPURLResponse *)response;
 - (NSHTTPURLResponse *)copyResponseFromCache;

@@ -12,6 +12,8 @@
 @interface FUZPlayerViewController ()
 
 @property (nonatomic, strong) FUZRemoteVideoPlayer *remoteVideoPlayer;
+@property (nonatomic, strong) UISlider *timeSlider;
+
 @property (nonatomic, strong) AVPlayerLayer *playerLayer;
 
 @end

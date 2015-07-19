@@ -27,6 +27,9 @@ NSInteger const kHTTPNotModifiedSuccessCode = 304;
 @property (nonatomic, assign) NSInteger currentLocation;
 
 @property (nonatomic, assign, getter=isContentInfoRequest) BOOL contentInfoRequest;
+@property (nonatomic, assign, getter=isReadFromCache) BOOL readFromCache;
+
+@property (nonatomic, assign, getter=isLoaded) BOOL loaded;
 
 @end
 
@@ -39,17 +42,12 @@ NSInteger const kHTTPNotModifiedSuccessCode = 304;
 
 - (void)start
 {
-    if (![NSThread isMainThread])
-    {
-        [self performSelectorOnMainThread:@selector(start)
-                               withObject:nil waitUntilDone:NO];
-        return;
-    }
-    
     self.executing = YES;
 
-    BOOL canReadFromCache = [self.cache canReadFromCacheWithOffset:self.currentLocation];
-    if(canReadFromCache && !self.isContentInfoRequest)
+    NSLog(@"%@", self.resourceLoadingRequest);
+    
+    self.readFromCache = [self.cache canReadFromCacheWithOffset:self.currentLocation];
+    if(self.isReadFromCache && !self.isContentInfoRequest)
     {
         [self receiveDataFromCache];
     }
@@ -61,6 +59,12 @@ NSInteger const kHTTPNotModifiedSuccessCode = 304;
 
 - (void)finish
 {
+    self.loaded = YES;    
+    if(!self.resourceLoadingRequest.isFinished)
+    {
+        [self.resourceLoadingRequest finishLoading];
+    }
+    
     if(self.connection)
     {
         [self.connection cancel];
@@ -81,38 +85,53 @@ NSInteger const kHTTPNotModifiedSuccessCode = 304;
     }
     
     @weakify(self);
-    [self.cache readFromCacheFromOffset:self.requiredRange.location withLength:self.requiredRange.length cacheBlock:^(NSData *cacheBlock)
+    [self.cache readFromCacheFromOffset:self.requiredRange.location withLength:self.requiredRange.length cacheBlock:^(NSData *cacheBlock, BOOL *stop)
      {
          @strongify(self);
          if(self.isCancelled)
          {
-             [self finish];
+             *stop = YES;
              return;
          }
-         
-         [self.resourceLoadingRequest.dataRequest respondWithData:cacheBlock];
+
+        [self.resourceLoadingRequest.dataRequest respondWithData:cacheBlock];
          self.currentLocation += cacheBlock.length;
+         NSLog(@"required - %@, readed %ld",NSStringFromRange(self.requiredRange), (long)self.currentLocation);
      }];
     
     if(self.isCancelled)
     {
+        [self finish];
         return;
     }
     
-    [self.resourceLoadingRequest finishLoading];
     [self finish];
 }
 
 - (void)receiveDataFromNetwork
 {
     NSMutableURLRequest *request = [self.resourceLoadingRequest.request mutableCopy];
-    NSLog(@"%@", request.allHTTPHeaderFields);
-    
     request.URL = [request.URL fuz_urlWithScheme:kFUZDefaultScheme];
     request.cachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
+
+    if(self.isReadFromCache)
+    {
+        NSString *modifiedSince = [[self.cache copyResponseFromCache].allHeaderFields fuz_responseLastModifiedValue];
+        [request setValue:modifiedSince forHTTPHeaderField:@"If-Modified-Since"];
+    }
     
-    self.connection = [NSURLConnection connectionWithRequest:request delegate:self];
+    NSLog(@"%@", request.allHTTPHeaderFields);
+    
+    
+    NSRunLoop *currentRunLoop = [NSRunLoop currentRunLoop];
+    self.connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:NO];
+    [self.connection scheduleInRunLoop:currentRunLoop forMode:NSRunLoopCommonModes];
     [self.connection start];
+    while ((!self.isLoaded) &&
+           ([currentRunLoop runMode:NSDefaultRunLoopMode beforeDate:[NSDate
+                                                           distantFuture]]))
+    {
+    }
 }
 
 - (void)setupContentInformationRequestWithResponseHeaders:(NSDictionary *)headers
@@ -157,17 +176,19 @@ NSInteger const kHTTPNotModifiedSuccessCode = 304;
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSHTTPURLResponse *)response
 {
     NSLog(@"%@", response);
-    self.response = response;
-    NSDictionary *headers = response.allHeaderFields;
-    
+    self.response = response;    
     if(self.isContentInfoRequest && response.statusCode == kHTTPPartialRequestSuccessCode)
     {
-        [self setupContentInformationRequestWithResponseHeaders:response.allHeaderFields];
         [self.cache writeResponseToCache:response];
+        [self setupContentInformationRequestWithResponseHeaders:response.allHeaderFields];
+        if(self.isReadFromCache)
+        {
+            [self.cache invalidate];
+        }
     }
-    if(response.statusCode == kHTTPNotModifiedSuccessCode)
+    if(self.response.statusCode == kHTTPNotModifiedSuccessCode)
     {
-        
+        [self receiveDataFromCache];
     }
 }
 
@@ -181,16 +202,23 @@ NSInteger const kHTTPNotModifiedSuccessCode = 304;
     
     if(!self.isContentInfoRequest)
     {
-        //Cache only data request
+        //Cache to filesystem only data request
         [self.cache writeDataToCache:data withOffset:self.currentLocation];
         self.currentLocation += data.length;
     }
-    [self.resourceLoadingRequest.dataRequest respondWithData:data];
+    
+    if(self.isCancelled)
+    {
+        [self finish];
+        return;
+    }
+//    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.resourceLoadingRequest.dataRequest respondWithData:data];
+//    });
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    [self.resourceLoadingRequest finishLoading];
     [self finish];
 }
 

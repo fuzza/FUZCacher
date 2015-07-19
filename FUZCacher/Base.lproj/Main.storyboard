@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Player View Controller-->
@@ -17,26 +18,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wq5-Tt-x3P">
-                                <rect key="frame" x="136" y="513" width="48" height="30"/>
-                                <state key="normal" title="RESET">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="resetButtonDidTap:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="4nb-NF-pQW"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r3e-H1-68t">
+                                <rect key="frame" x="0.0" y="488" width="320" height="80"/>
+                                <subviews>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="lzZ-dP-SCu">
+                                        <rect key="frame" x="23" y="40" width="274" height="31"/>
+                                    </slider>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wq5-Tt-x3P">
+                                        <rect key="frame" x="25" y="8" width="48" height="30"/>
+                                        <state key="normal" title="RESET">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="resetButtonDidTap:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="4nb-NF-pQW"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="lzZ-dP-SCu" secondAttribute="trailing" constant="25" id="27B-QM-a9Q"/>
+                                    <constraint firstItem="Wq5-Tt-x3P" firstAttribute="top" secondItem="r3e-H1-68t" secondAttribute="top" constant="8" id="2H6-vn-vOh"/>
+                                    <constraint firstAttribute="height" constant="80" id="W3P-8X-1Tn"/>
+                                    <constraint firstAttribute="bottom" secondItem="lzZ-dP-SCu" secondAttribute="bottom" constant="10" id="rTd-kD-z8G"/>
+                                    <constraint firstItem="lzZ-dP-SCu" firstAttribute="leading" secondItem="r3e-H1-68t" secondAttribute="leading" constant="25" id="vPE-bo-nll"/>
+                                    <constraint firstItem="Wq5-Tt-x3P" firstAttribute="leading" secondItem="r3e-H1-68t" secondAttribute="leading" constant="25" id="zwB-2P-COR"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="Wq5-Tt-x3P" secondAttribute="centerX" id="LQS-bN-MRt"/>
-                            <constraint firstItem="hpi-CJ-oJi" firstAttribute="top" secondItem="Wq5-Tt-x3P" secondAttribute="bottom" constant="25" id="YUZ-8c-PN4"/>
+                            <constraint firstItem="r3e-H1-68t" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="0Zp-S6-xox"/>
+                            <constraint firstAttribute="trailing" secondItem="r3e-H1-68t" secondAttribute="trailing" id="RNZ-Ky-L50"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="r3e-H1-68t" secondAttribute="bottom" id="Rjd-xz-tVb"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
+                    <nil key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="131.19999999999999" y="214.89333333333335"/>
+            <point key="canvasLocation" x="131" y="214"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

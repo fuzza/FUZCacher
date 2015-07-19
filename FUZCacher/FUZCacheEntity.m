@@ -36,27 +36,42 @@ NSString *const kFUZCacheEntityRangesKey = @"kFUZCacheEntityRangesKey";
     {
         self.url = [aDecoder decodeObjectForKey:kFUZCacheEntityURLKey];
         self.cachedResponse = [aDecoder decodeObjectForKey:kFUZCacheEntityResponseKey];
-        self.filePath = [aDecoder decodeObjectForKey:kFUZCacheFilePathKey];
+        NSString *relativePath = [aDecoder decodeObjectForKey:kFUZCacheFilePathKey];
+        if(relativePath)
+        {
+            self.filePath = [self absolutePathFromRelative:relativePath];
+        }
         
+        if([FUZFileHandle fileExistsAtPath:self.filePath])
+        {
+            self.ranges = [aDecoder decodeObjectForKey:kFUZCacheEntityRangesKey];
+        }
     }
     
     return self;
 }
 
+- (void)invalidate
+{
+    [self.fileHandle invalidate];
+    self.cachedResponse = nil;
+    self.ranges = nil;
+    self.fileHandle = [[FUZFileHandle alloc] initWithPath:self.filePath];
+}
+
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
-    [aCoder encodeObject:self.url forKey:@"urlKey"];
-    [aCoder encodeObject:self.cachedResponse forKey:@"cachedResponse"];
-    [aCoder encodeObject:self.filePath forKey:@"filePath"];
-    
-    
-    NSMutableArray *rangesToEncode = [@[] mutableCopy];
-    for (NSValue *rangeValue in self.ranges)
-    {
-        NSRange range = [rangeValue rangeValue];
-        [rangesToEncode addObject:NSStringFromRange(range)];
-    }
-    [aCoder encodeObject:rangesToEncode forKey:@"ranges"];
+    [aCoder encodeObject:self.url forKey:kFUZCacheEntityURLKey];
+    [aCoder encodeObject:self.cachedResponse forKey:kFUZCacheEntityResponseKey];
+    [aCoder encodeObject:[self.filePath lastPathComponent] forKey:kFUZCacheFilePathKey];
+    [aCoder encodeObject:self.ranges forKey:kFUZCacheEntityRangesKey];
+}
+
+- (NSString *)absolutePathFromRelative:(NSString *)relativePath
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    return [documentsDirectory stringByAppendingPathComponent:relativePath];
 }
 
 - (instancetype)initWithURL:(NSURL *)url
@@ -66,7 +81,6 @@ NSString *const kFUZCacheEntityRangesKey = @"kFUZCacheEntityRangesKey";
     {
         self.url = url;
         [self generateFilePath];
-        [self openFileHandle];
     }
     return self;
 }
@@ -75,16 +89,8 @@ NSString *const kFUZCacheEntityRangesKey = @"kFUZCacheEntityRangesKey";
 {
     NSString *extension = [self.url pathExtension];
     NSString *fileName = [[NSUUID UUID] UUIDString];
-    NSString *fullPath = [fileName stringByAppendingPathExtension:extension];
-    
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    self.filePath = [documentsDirectory stringByAppendingPathComponent:fullPath];
-}
-
-- (void)openFileHandle
-{
-    self.fileHandle = [[FUZFileHandle alloc] initWithPath:self.filePath];
+    NSString *relativePath = [fileName stringByAppendingPathExtension:extension];
+    self.filePath = [self absolutePathFromRelative:relativePath];
 }
 
 - (void)writeResponseToCache:(NSHTTPURLResponse *)response
@@ -105,9 +111,9 @@ NSString *const kFUZCacheEntityRangesKey = @"kFUZCacheEntityRangesKey";
     NSRange targetRange = NSMakeRange(offset, data.length);
     
     BOOL merged = NO;
-    for (NSValue *rangeValue in self.ranges)
+    for (NSString *rangeString in self.ranges)
     {
-        NSRange cachedRange = [rangeValue rangeValue];
+        NSRange cachedRange = NSRangeFromString(rangeString);
         NSRange intersection = NSIntersectionRange(cachedRange, targetRange);
         
         BOOL shouldBeMerged = (cachedRange.location + cachedRange.length == targetRange.location);
@@ -116,8 +122,8 @@ NSString *const kFUZCacheEntityRangesKey = @"kFUZCacheEntityRangesKey";
         if (intersection.length > 0 || shouldBeMerged)
         {
             NSRange unionRange = NSUnionRange(cachedRange, targetRange);
-            [self.ranges removeObject:rangeValue];
-            [self.ranges addObject:[NSValue valueWithRange:unionRange]];
+            [self.ranges removeObject:rangeString];
+            [self.ranges addObject:NSStringFromRange(unionRange)];
             NSLog(@"Merged ranges to %@", NSStringFromRange(unionRange));
             merged = YES;
             break;
@@ -127,7 +133,7 @@ NSString *const kFUZCacheEntityRangesKey = @"kFUZCacheEntityRangesKey";
     if(!merged)
     {
         NSLog(@"Added rangee to %@", NSStringFromRange(targetRange));
-        [self.ranges addObject:[NSValue valueWithRange:targetRange]];
+        [self.ranges addObject:NSStringFromRange(targetRange)];
     }
 }
 
@@ -135,9 +141,9 @@ NSString *const kFUZCacheEntityRangesKey = @"kFUZCacheEntityRangesKey";
 {
     NSRange targetRange = NSMakeRange(offset, length);
     NSRange __block intersection;
-    for (NSValue *rangeValue in self.ranges)
+    for (NSString *rangeString in self.ranges)
     {
-        NSRange cachedRange = [rangeValue rangeValue];
+        NSRange cachedRange = NSRangeFromString(rangeString);
         NSRange matched = NSIntersectionRange(cachedRange, targetRange);
         if (matched.length > 0 && matched.location == targetRange.location)
         {
@@ -146,18 +152,18 @@ NSString *const kFUZCacheEntityRangesKey = @"kFUZCacheEntityRangesKey";
         }
     }
 
-    [self.fileHandle readDataFromStartOffset:intersection.location length:intersection.length blockSize:1024 dataCallback:^(NSData *chunk)
+    [self.fileHandle readDataFromStartOffset:intersection.location length:intersection.length blockSize:1024 dataCallback:^(NSData *chunk, BOOL *stop)
     {
-        block(chunk);
+        block(chunk, stop);
     }];
 }
 
 - (BOOL)canReadFromCacheWithOffset:(NSInteger)offset
 {
     NSRange targetRange = NSMakeRange(offset, 1);
-    for (NSValue *rangeValue in self.ranges)
+    for (NSString *rangeString in self.ranges)
     {
-        NSRange cachedRange = [rangeValue rangeValue];
+        NSRange cachedRange = NSRangeFromString(rangeString);
         NSRange intersection = NSIntersectionRange(cachedRange, targetRange);
         if (intersection.length > 0)
         {
@@ -165,6 +171,15 @@ NSString *const kFUZCacheEntityRangesKey = @"kFUZCacheEntityRangesKey";
         }
     }
     return NO;
+}
+
+- (FUZFileHandle *)fileHandle
+{
+    if(!_fileHandle)
+    {
+        _fileHandle = [[FUZFileHandle alloc] initWithPath:self.filePath];
+    }
+    return _fileHandle;
 }
 
 - (NSMutableArray *)ranges

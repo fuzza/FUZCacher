@@ -32,8 +32,21 @@
 
 - (void)dealloc
 {
+    [self close];
+}
+
+- (void)close
+{
     [self.writeHandle closeFile];
+    self.writeHandle = nil;
     [self.readHandle closeFile];
+    self.readHandle = nil;
+}
+
+- (void)invalidate
+{
+    [self close];
+    [[NSFileManager defaultManager] removeItemAtPath:self.path error:nil];
 }
 
 - (void)setupWriteHandle
@@ -75,6 +88,8 @@
     
     [self.readHandle seekToFileOffset:startOffset];
 
+    BOOL stop = NO;
+    
     NSInteger remainingLength = length;
     do
     {
@@ -92,10 +107,16 @@
         
         if(block.length)
         {
-            callback(block);
+            callback(block, &stop);
         }
     }
-    while (remainingLength > 0);
+    while (remainingLength > 0 && !stop);
+}
+
++ (BOOL)fileExistsAtPath:(NSString *)path
+{
+    BOOL isDirectory;
+    return [[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&isDirectory];
 }
 
 @end

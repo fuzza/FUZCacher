@@ -55,4 +55,9 @@ NSString * const kRequestHeaderRangeValuesSeparator = @"-";
     return nil;
 }
 
+- (NSString *)fuz_responseLastModifiedValue
+{
+    return [self valueForKey:@"Last-Modified"];
+}
+
 @end

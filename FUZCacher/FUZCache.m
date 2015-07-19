@@ -11,7 +11,7 @@
 
 @interface FUZCache ()
 
-@property (nonatomic, strong) NSCache *cache;
+@property (nonatomic, strong) NSMutableDictionary *cache;
 
 @end
 
@@ -32,10 +32,8 @@
     NSData *unarchivedCache = [[NSUserDefaults standardUserDefaults] objectForKey:@"FUZCacheKey"];
     if(unarchivedCache)
     {
-        self.cache = [NSKeyedUnarchiver unarchiveObjectWithData:[NSData new]];
-        return;
+        self.cache = [NSKeyedUnarchiver unarchiveObjectWithData:unarchivedCache];
     }
-    self.cache = [[NSCache alloc] init];
 }
 
 - (void)saveCacheToPersistentStorage
@@ -58,7 +56,17 @@
         cacheEntity = [[FUZCacheEntity alloc] initWithURL:url];
     }
     [self.cache setObject:cacheEntity forKey:url];
+    [self saveCacheToPersistentStorage];
     return cacheEntity;
+}
+
+- (NSMutableDictionary *)cache
+{
+    if(!_cache)
+    {
+        _cache = [@{} mutableCopy];
+    }
+    return _cache;
 }
 
 @end

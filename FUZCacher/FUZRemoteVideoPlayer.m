@@ -137,6 +137,7 @@
 
 - (BOOL)resourceLoader:(AVAssetResourceLoader *)resourceLoader shouldWaitForLoadingOfRequestedResource:(AVAssetResourceLoadingRequest *)loadingRequest
 {
+    [self.currentOperation cancel];
     self.currentOperation = [FUZLoadingOperation new];
     self.currentOperation.resourceLoadingRequest = loadingRequest;
     self.currentOperation.cache = [self.playerCache cacheEntityForURL:self.currentURL];

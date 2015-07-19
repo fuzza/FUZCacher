@@ -8,11 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void (^FUZFileBlockReadingCallback)(NSData *block);
+typedef void (^FUZFileBlockReadingCallback)(NSData *block, BOOL *stop);
 
 @interface FUZFileHandle : NSObject
 
 - (instancetype)initWithPath:(NSString *)path;
+
+- (void)invalidate;
 
 - (void)writeData:(NSData *)data
        withOffset:(NSInteger)offset;
@@ -21,5 +23,7 @@ typedef void (^FUZFileBlockReadingCallback)(NSData *block);
                          length:(NSInteger)length
                       blockSize:(NSInteger)blockSize
                    dataCallback:(FUZFileBlockReadingCallback)callback;
+
++ (BOOL)fileExistsAtPath:(NSString *)path;
 
 @end

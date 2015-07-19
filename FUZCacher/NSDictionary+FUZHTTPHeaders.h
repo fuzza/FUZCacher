@@ -14,5 +14,6 @@
 
 - (NSInteger)fuz_responseContentRangeTotalLength;
 - (NSString *)fuz_responseUTIFromContentTypeValue;
+- (NSString *)fuz_responseLastModifiedValue;
 
 @end
