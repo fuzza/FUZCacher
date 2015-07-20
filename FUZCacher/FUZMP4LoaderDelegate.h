@@ -13,6 +13,8 @@
 @interface FUZMP4LoaderDelegate : NSObject <AVAssetResourceLoaderDelegate>
 
 - (void)setupWithCache:(FUZCacheEntity *)cache;
+- (void)invalidateCache;
 - (void)cancelLoading;
+
 
 @end

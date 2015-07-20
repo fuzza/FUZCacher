@@ -14,5 +14,6 @@
 
 - (BOOL)isCacheExistsForURL:(NSURL *)url;
 - (FUZCacheEntity *)cacheEntityForURL:(NSURL *)url;
+- (void)saveCacheToPersistentStorage;
 
 @end

@@ -52,7 +52,7 @@
     self.readHandle = nil;
 }
 
-- (void)invalidate
+- (void)closeAndDelete
 {
     [self close];
     [[NSFileManager defaultManager] removeItemAtPath:self.path error:nil];

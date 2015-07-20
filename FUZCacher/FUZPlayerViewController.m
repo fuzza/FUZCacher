@@ -57,7 +57,7 @@
                                                        userInfo:nil
                                                         repeats:YES];
     [self updateUI];
-    self.timeSlider.continuous = YES;
+    self.timeSlider.continuous = NO;
 }
 
 - (void)updateUI

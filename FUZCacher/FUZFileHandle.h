@@ -17,7 +17,7 @@ typedef void (^FUZFileBlockReadingCallback)(NSData *block, BOOL *stop);
 - (void)open;
 - (void)close;
 
-- (void)invalidate;
+- (void)closeAndDelete;
 
 - (void)writeData:(NSData *)data
        withOffset:(NSInteger)offset;

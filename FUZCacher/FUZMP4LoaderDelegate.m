@@ -26,6 +26,11 @@
     self.cache = cache;
 }
 
+- (void)invalidateCache
+{
+    [self.cache invalidate];
+}
+
 - (void)cancelLoading
 {
     [self.operationQueue cancelAllOperations];

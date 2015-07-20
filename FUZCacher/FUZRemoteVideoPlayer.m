@@ -34,8 +34,35 @@ NSString * const kPlaybackLikelyToKeepUpKey = @"playbackLikelyToKeepUp";
     if(self)
     {
         self.playerCache = [[FUZCache alloc] init];
+        [self setupNSNotifications];
     }
     return self;
+}
+
+- (void)dealloc
+{
+    [self resetPlayerObserving];
+    [self resetNSNotifications];
+}
+
+- (void)setupNSNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(resignActive:)
+                                                 name:UIApplicationWillResignActiveNotification
+                                               object:nil];
+}
+
+- (void)resetNSNotifications
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)resignActive:(NSNotification *)notification
+{
+    
+    [self pause];
+    [self.playerCache saveCacheToPersistentStorage];
 }
 
 - (void)setupWithVideoUrl:(NSURL *)videoUrl
@@ -71,13 +98,17 @@ NSString * const kPlaybackLikelyToKeepUpKey = @"playbackLikelyToKeepUp";
 
 - (void)pause
 {
-    [self.videoPlayer pause];
-    self.playing = NO;
+    if(self.isPlaying)
+    {
+        [self.videoPlayer pause];
+        self.playing = NO;
+    }
 }
 
 - (void)restart
 {
     [self.loader cancelLoading];
+    [self.loader invalidateCache];
     [self.videoPlayer pause];
     self.videoPlayer = nil;
     
@@ -95,11 +126,6 @@ NSString * const kPlaybackLikelyToKeepUpKey = @"playbackLikelyToKeepUp";
     [self resetPlayerObserving];
     _videoPlayer = videoPlayer;
     [self setupPlayerObserving];
-}
-
-- (void)dealloc
-{
-    [self resetPlayerObserving];
 }
 
 - (void)setupPlayerObserving

@@ -53,7 +53,7 @@ NSString *const kFUZCacheEntityRangesKey = @"kFUZCacheEntityRangesKey";
 
 - (void)invalidate
 {
-    [self.fileHandle invalidate];
+    [self.fileHandle closeAndDelete];
     self.fileHandle = nil;
     self.cachedResponse = nil;
     self.ranges = nil;

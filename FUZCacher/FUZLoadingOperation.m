@@ -105,6 +105,7 @@ NSInteger const kHTTPNotModifiedSuccessCode = 304;
     [self.connection start];
     while (!self.isLoaded && [currentRunLoop runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]])
     {
+        /**Empty loop**/
     }
 }
 
