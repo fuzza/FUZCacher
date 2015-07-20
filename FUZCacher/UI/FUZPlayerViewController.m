@@ -23,6 +23,8 @@
 
 @implementation FUZPlayerViewController
 
+#pragma mark - ViewController lifecycle
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -33,6 +35,13 @@
     [self setupRemotePlayerWithURL:videoUrl];
     [self setupSlider];
 }
+
+- (void)dealloc
+{
+    [self stopSliderTimer];
+}
+
+#pragma mark - Player
 
 - (void)setupRemotePlayerWithURL:(NSURL *)videoUrl
 {
@@ -47,18 +56,48 @@
     [self.playerView setNeedsLayout];
 }
 
+- (void)startPlayback
+{
+    [self.remoteVideoPlayer play];
+    [self startSliderTimer];
+    [self updateUI];
+}
+
+- (void)stopPlayback
+{
+    [self.remoteVideoPlayer pause];
+    [self stopSliderTimer];
+    [self updateUI];
+}
+
 #pragma mark - Slider
 
 - (void)setupSlider
 {
-    self.sliderTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
-                                                         target:self
-                                                       selector:@selector(updateUI)
-                                                       userInfo:nil
-                                                        repeats:YES];
-    [self updateUI];
     self.timeSlider.continuous = NO;
+    [self updateUI];
 }
+
+- (void)startSliderTimer
+{
+    [self stopSliderTimer];
+    self.sliderTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
+                                                        target:self
+                                                      selector:@selector(updateUI)
+                                                      userInfo:nil
+                                                       repeats:YES];
+}
+
+- (void)stopSliderTimer
+{
+    if(self.sliderTimer)
+    {
+        [self.sliderTimer invalidate];
+        self.sliderTimer = nil;
+    }
+}
+
+#pragma mark - UI
 
 - (void)updateUI
 {
@@ -67,19 +106,23 @@
     self.playButton.selected = [self.remoteVideoPlayer isPlaying];
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
+
 #pragma mark - IBActions
 
 - (IBAction)startButtonDidTap:(UIButton *)sender
 {
     if([self.remoteVideoPlayer isPlaying])
     {
-        [self.remoteVideoPlayer pause];
+        [self stopPlayback];
     }
     else
     {
-        [self.remoteVideoPlayer play];
+        [self startPlayback];
     }
-    [self updateUI];
 }
 
 - (IBAction)resetButtonDidTap:(UIButton *)sender
