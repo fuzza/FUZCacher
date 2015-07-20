@@ -1,667 +1,1677 @@
-// !$*UTF8*$!
-{
-	archiveVersion = 1;
-	classes = {
-	};
-	objectVersion = 46;
-	objects = {
-
-/* Begin PBXBuildFile section */
-		285A53A59E7FECB6032C902C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA60DDAE4E07503515EEC456 /* libPods.a */; };
-		6F09BC4C1B5A5C82000B57F2 /* FUZLoadingOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F09BC4B1B5A5C82000B57F2 /* FUZLoadingOperation.m */; };
-		6F09BC4F1B5A5FB2000B57F2 /* NSURL+FUZScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F09BC4E1B5A5FB2000B57F2 /* NSURL+FUZScheme.m */; };
-		6F09BC511B5A6026000B57F2 /* NSURL+FUZSchemeSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F09BC501B5A6026000B57F2 /* NSURL+FUZSchemeSpec.m */; };
-		6F09BC5B1B5AAABB000B57F2 /* NSDictionary+FUZHTTPHeaders.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F09BC5A1B5AAABB000B57F2 /* NSDictionary+FUZHTTPHeaders.m */; };
-		6F09BC5E1B5AAFC7000B57F2 /* FUZFileHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F09BC5D1B5AAFC7000B57F2 /* FUZFileHandle.m */; };
-		6F4796F71B5B917800340B80 /* FUZCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F4796F61B5B917800340B80 /* FUZCache.m */; };
-		6F49BAF51B5C041C007B9DF4 /* NSDIctionary+FUZHTTPHeadersSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F49BAF41B5C041C007B9DF4 /* NSDIctionary+FUZHTTPHeadersSpec.m */; };
-		6F49BAF71B5C092D007B9DF4 /* FUZFileHandleSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F49BAF61B5C092D007B9DF4 /* FUZFileHandleSpec.m */; };
-		6F49BAFA1B5C0EB4007B9DF4 /* FUZPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F49BAF91B5C0EB4007B9DF4 /* FUZPlayerView.m */; };
-		6F49BB001B5C1C5D007B9DF4 /* FUZMP4LoaderDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F49BAFF1B5C1C5D007B9DF4 /* FUZMP4LoaderDelegate.m */; };
-		6F49BB091B5C28ED007B9DF4 /* FUZPartialLoadingRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F49BB081B5C28ED007B9DF4 /* FUZPartialLoadingRequest.m */; };
-		6F736A9E1B58370A00335122 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F736A9D1B58370A00335122 /* main.m */; };
-		6F736AA11B58370A00335122 /* FUZAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F736AA01B58370A00335122 /* FUZAppDelegate.m */; };
-		6F736AA71B58370A00335122 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F736AA51B58370A00335122 /* Main.storyboard */; };
-		6F736AA91B58370A00335122 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F736AA81B58370A00335122 /* Images.xcassets */; };
-		6F736AAC1B58370A00335122 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F736AAA1B58370A00335122 /* LaunchScreen.xib */; };
-		6F736AC61B583CA600335122 /* FUZPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F736AC51B583CA600335122 /* FUZPlayerViewController.m */; };
-		6F736AC81B583D4C00335122 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F736AC71B583D4C00335122 /* AVFoundation.framework */; };
-		6F736ACB1B583FD900335122 /* FUZRemoteVideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F736ACA1B583FD900335122 /* FUZRemoteVideoPlayer.m */; };
-		6FE8E1611B59938200B25498 /* FUZCacheEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FE8E1601B59938200B25498 /* FUZCacheEntity.m */; };
-		C1DD82F471D7E04D909057CB /* libPods-FUZCacherTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4836D7959B1A8EB5276FF553 /* libPods-FUZCacherTests.a */; };
-/* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		6F736AB21B58370A00335122 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6F736A901B58370A00335122 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 6F736A971B58370A00335122;
-			remoteInfo = FUZCacher;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXFileReference section */
-		2930ABD5418F15C77B0EE007 /* Pods-FUZCacherTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FUZCacherTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FUZCacherTests/Pods-FUZCacherTests.debug.xcconfig"; sourceTree = "<group>"; };
-		4836D7959B1A8EB5276FF553 /* libPods-FUZCacherTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FUZCacherTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5487D24C3DA1B4A3EBDB5698 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		6F09BC4A1B5A5C82000B57F2 /* FUZLoadingOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUZLoadingOperation.h; sourceTree = "<group>"; };
-		6F09BC4B1B5A5C82000B57F2 /* FUZLoadingOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUZLoadingOperation.m; sourceTree = "<group>"; };
-		6F09BC4D1B5A5FB2000B57F2 /* NSURL+FUZScheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+FUZScheme.h"; sourceTree = "<group>"; };
-		6F09BC4E1B5A5FB2000B57F2 /* NSURL+FUZScheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+FUZScheme.m"; sourceTree = "<group>"; };
-		6F09BC501B5A6026000B57F2 /* NSURL+FUZSchemeSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+FUZSchemeSpec.m"; sourceTree = "<group>"; };
-		6F09BC591B5AAABB000B57F2 /* NSDictionary+FUZHTTPHeaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+FUZHTTPHeaders.h"; sourceTree = "<group>"; };
-		6F09BC5A1B5AAABB000B57F2 /* NSDictionary+FUZHTTPHeaders.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+FUZHTTPHeaders.m"; sourceTree = "<group>"; };
-		6F09BC5C1B5AAFC7000B57F2 /* FUZFileHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUZFileHandle.h; sourceTree = "<group>"; };
-		6F09BC5D1B5AAFC7000B57F2 /* FUZFileHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUZFileHandle.m; sourceTree = "<group>"; };
-		6F0ABCE41B5B124D0029D242 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		6F4796F41B5B8E8900340B80 /* PrefixHeader-Tests.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PrefixHeader-Tests.pch"; sourceTree = "<group>"; };
-		6F4796F51B5B917800340B80 /* FUZCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUZCache.h; sourceTree = "<group>"; };
-		6F4796F61B5B917800340B80 /* FUZCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUZCache.m; sourceTree = "<group>"; };
-		6F49BAF41B5C041C007B9DF4 /* NSDIctionary+FUZHTTPHeadersSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDIctionary+FUZHTTPHeadersSpec.m"; sourceTree = "<group>"; };
-		6F49BAF61B5C092D007B9DF4 /* FUZFileHandleSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUZFileHandleSpec.m; sourceTree = "<group>"; };
-		6F49BAF81B5C0EB4007B9DF4 /* FUZPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUZPlayerView.h; sourceTree = "<group>"; };
-		6F49BAF91B5C0EB4007B9DF4 /* FUZPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUZPlayerView.m; sourceTree = "<group>"; };
-		6F49BAFE1B5C1C5D007B9DF4 /* FUZMP4LoaderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUZMP4LoaderDelegate.h; sourceTree = "<group>"; };
-		6F49BAFF1B5C1C5D007B9DF4 /* FUZMP4LoaderDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUZMP4LoaderDelegate.m; sourceTree = "<group>"; };
-		6F49BB071B5C28ED007B9DF4 /* FUZPartialLoadingRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUZPartialLoadingRequest.h; sourceTree = "<group>"; };
-		6F49BB081B5C28ED007B9DF4 /* FUZPartialLoadingRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUZPartialLoadingRequest.m; sourceTree = "<group>"; };
-		6F736A981B58370A00335122 /* FUZCacher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FUZCacher.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		6F736A9C1B58370A00335122 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6F736A9D1B58370A00335122 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		6F736A9F1B58370A00335122 /* FUZAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FUZAppDelegate.h; sourceTree = "<group>"; };
-		6F736AA01B58370A00335122 /* FUZAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FUZAppDelegate.m; sourceTree = "<group>"; };
-		6F736AA61B58370A00335122 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		6F736AA81B58370A00335122 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		6F736AAB1B58370A00335122 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		6F736AB11B58370A00335122 /* FUZCacherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FUZCacherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6F736AB61B58370B00335122 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6F736AC41B583CA600335122 /* FUZPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUZPlayerViewController.h; sourceTree = "<group>"; };
-		6F736AC51B583CA600335122 /* FUZPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUZPlayerViewController.m; sourceTree = "<group>"; };
-		6F736AC71B583D4C00335122 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		6F736AC91B583FD900335122 /* FUZRemoteVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUZRemoteVideoPlayer.h; sourceTree = "<group>"; };
-		6F736ACA1B583FD900335122 /* FUZRemoteVideoPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUZRemoteVideoPlayer.m; sourceTree = "<group>"; };
-		6FE8E15F1B59938200B25498 /* FUZCacheEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUZCacheEntity.h; sourceTree = "<group>"; };
-		6FE8E1601B59938200B25498 /* FUZCacheEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUZCacheEntity.m; sourceTree = "<group>"; };
-		7069A2EAF5E7B2CF00BB87B4 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		AF5F4AA1278F4986CD603831 /* Pods-FUZCacherTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FUZCacherTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FUZCacherTests/Pods-FUZCacherTests.release.xcconfig"; sourceTree = "<group>"; };
-		BA60DDAE4E07503515EEC456 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-/* End PBXFileReference section */
-
-/* Begin PBXFrameworksBuildPhase section */
-		6F736A951B58370A00335122 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6F736AC81B583D4C00335122 /* AVFoundation.framework in Frameworks */,
-				285A53A59E7FECB6032C902C /* libPods.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6F736AAE1B58370A00335122 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C1DD82F471D7E04D909057CB /* libPods-FUZCacherTests.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
-
-/* Begin PBXGroup section */
-		318D2BA96B3E0E1FF002EA9E /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				6F736AC71B583D4C00335122 /* AVFoundation.framework */,
-				4836D7959B1A8EB5276FF553 /* libPods-FUZCacherTests.a */,
-				BA60DDAE4E07503515EEC456 /* libPods.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		6F09BC521B5A61EC000B57F2 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				6F09BC4D1B5A5FB2000B57F2 /* NSURL+FUZScheme.h */,
-				6F09BC4E1B5A5FB2000B57F2 /* NSURL+FUZScheme.m */,
-				6F09BC591B5AAABB000B57F2 /* NSDictionary+FUZHTTPHeaders.h */,
-				6F09BC5A1B5AAABB000B57F2 /* NSDictionary+FUZHTTPHeaders.m */,
-			);
-			name = Utils;
-			sourceTree = "<group>";
-		};
-		6F09BC5F1B5AB7A9000B57F2 /* Player */ = {
-			isa = PBXGroup;
-			children = (
-				6F736AC91B583FD900335122 /* FUZRemoteVideoPlayer.h */,
-				6F736ACA1B583FD900335122 /* FUZRemoteVideoPlayer.m */,
-			);
-			name = Player;
-			sourceTree = "<group>";
-		};
-		6F49BAFB1B5C1C10007B9DF4 /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				6F736AC41B583CA600335122 /* FUZPlayerViewController.h */,
-				6F736AC51B583CA600335122 /* FUZPlayerViewController.m */,
-				6F49BAF81B5C0EB4007B9DF4 /* FUZPlayerView.h */,
-				6F49BAF91B5C0EB4007B9DF4 /* FUZPlayerView.m */,
-			);
-			name = UI;
-			sourceTree = "<group>";
-		};
-		6F49BAFC1B5C1C27007B9DF4 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				6F736AA51B58370A00335122 /* Main.storyboard */,
-				6F736AA81B58370A00335122 /* Images.xcassets */,
-				6F736AAA1B58370A00335122 /* LaunchScreen.xib */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		6F49BAFD1B5C1C42007B9DF4 /* ResourceLoader */ = {
-			isa = PBXGroup;
-			children = (
-				6F49BAFE1B5C1C5D007B9DF4 /* FUZMP4LoaderDelegate.h */,
-				6F49BAFF1B5C1C5D007B9DF4 /* FUZMP4LoaderDelegate.m */,
-			);
-			name = ResourceLoader;
-			sourceTree = "<group>";
-		};
-		6F736A8F1B58370A00335122 = {
-			isa = PBXGroup;
-			children = (
-				6F736A9A1B58370A00335122 /* FUZCacher */,
-				6F736AB41B58370A00335122 /* FUZCacherTests */,
-				6F736A991B58370A00335122 /* Products */,
-				B676DD4A68E97E7A07C9D2C6 /* Pods */,
-				318D2BA96B3E0E1FF002EA9E /* Frameworks */,
-			);
-			sourceTree = "<group>";
-		};
-		6F736A991B58370A00335122 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				6F736A981B58370A00335122 /* FUZCacher.app */,
-				6F736AB11B58370A00335122 /* FUZCacherTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		6F736A9A1B58370A00335122 /* FUZCacher */ = {
-			isa = PBXGroup;
-			children = (
-				6F49BAFD1B5C1C42007B9DF4 /* ResourceLoader */,
-				6F49BAFC1B5C1C27007B9DF4 /* Resources */,
-				6F49BAFB1B5C1C10007B9DF4 /* UI */,
-				6F09BC5F1B5AB7A9000B57F2 /* Player */,
-				6F09BC521B5A61EC000B57F2 /* Utils */,
-				6F736A9F1B58370A00335122 /* FUZAppDelegate.h */,
-				6F736AA01B58370A00335122 /* FUZAppDelegate.m */,
-				6F736A9B1B58370A00335122 /* Supporting Files */,
-				6FE8E15F1B59938200B25498 /* FUZCacheEntity.h */,
-				6FE8E1601B59938200B25498 /* FUZCacheEntity.m */,
-				6F09BC4A1B5A5C82000B57F2 /* FUZLoadingOperation.h */,
-				6F09BC4B1B5A5C82000B57F2 /* FUZLoadingOperation.m */,
-				6F09BC5C1B5AAFC7000B57F2 /* FUZFileHandle.h */,
-				6F09BC5D1B5AAFC7000B57F2 /* FUZFileHandle.m */,
-				6F4796F51B5B917800340B80 /* FUZCache.h */,
-				6F4796F61B5B917800340B80 /* FUZCache.m */,
-				6F49BB071B5C28ED007B9DF4 /* FUZPartialLoadingRequest.h */,
-				6F49BB081B5C28ED007B9DF4 /* FUZPartialLoadingRequest.m */,
-			);
-			path = FUZCacher;
-			sourceTree = "<group>";
-		};
-		6F736A9B1B58370A00335122 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				6F736A9C1B58370A00335122 /* Info.plist */,
-				6F736A9D1B58370A00335122 /* main.m */,
-				6F0ABCE41B5B124D0029D242 /* PrefixHeader.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		6F736AB41B58370A00335122 /* FUZCacherTests */ = {
-			isa = PBXGroup;
-			children = (
-				6F736AB51B58370B00335122 /* Supporting Files */,
-				6F09BC501B5A6026000B57F2 /* NSURL+FUZSchemeSpec.m */,
-				6F49BAF41B5C041C007B9DF4 /* NSDIctionary+FUZHTTPHeadersSpec.m */,
-				6F49BAF61B5C092D007B9DF4 /* FUZFileHandleSpec.m */,
-			);
-			path = FUZCacherTests;
-			sourceTree = "<group>";
-		};
-		6F736AB51B58370B00335122 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				6F736AB61B58370B00335122 /* Info.plist */,
-				6F4796F41B5B8E8900340B80 /* PrefixHeader-Tests.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		B676DD4A68E97E7A07C9D2C6 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				2930ABD5418F15C77B0EE007 /* Pods-FUZCacherTests.debug.xcconfig */,
-				AF5F4AA1278F4986CD603831 /* Pods-FUZCacherTests.release.xcconfig */,
-				5487D24C3DA1B4A3EBDB5698 /* Pods.debug.xcconfig */,
-				7069A2EAF5E7B2CF00BB87B4 /* Pods.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-/* End PBXGroup section */
-
-/* Begin PBXNativeTarget section */
-		6F736A971B58370A00335122 /* FUZCacher */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6F736ABB1B58370B00335122 /* Build configuration list for PBXNativeTarget "FUZCacher" */;
-			buildPhases = (
-				49495BB73AA80E6C9FBD3978 /* Check Pods Manifest.lock */,
-				6F736A941B58370A00335122 /* Sources */,
-				6F736A951B58370A00335122 /* Frameworks */,
-				6F736A961B58370A00335122 /* Resources */,
-				E08A1202F9CF3D3E95058C14 /* Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = FUZCacher;
-			productName = FUZCacher;
-			productReference = 6F736A981B58370A00335122 /* FUZCacher.app */;
-			productType = "com.apple.product-type.application";
-		};
-		6F736AB01B58370A00335122 /* FUZCacherTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6F736ABE1B58370B00335122 /* Build configuration list for PBXNativeTarget "FUZCacherTests" */;
-			buildPhases = (
-				E244D931847460154D90A284 /* Check Pods Manifest.lock */,
-				6F736AAD1B58370A00335122 /* Sources */,
-				6F736AAE1B58370A00335122 /* Frameworks */,
-				6F736AAF1B58370A00335122 /* Resources */,
-				8F0974F10993C38CCB791ABC /* Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				6F736AB31B58370A00335122 /* PBXTargetDependency */,
-			);
-			name = FUZCacherTests;
-			productName = FUZCacherTests;
-			productReference = 6F736AB11B58370A00335122 /* FUZCacherTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-/* End PBXNativeTarget section */
-
-/* Begin PBXProject section */
-		6F736A901B58370A00335122 /* Project object */ = {
-			isa = PBXProject;
-			attributes = {
-				CLASSPREFIX = FUZ;
-				LastUpgradeCheck = 0630;
-				ORGANIZATIONNAME = fuzza;
-				TargetAttributes = {
-					6F736A971B58370A00335122 = {
-						CreatedOnToolsVersion = 6.3.1;
-					};
-					6F736AB01B58370A00335122 = {
-						CreatedOnToolsVersion = 6.3.1;
-						TestTargetID = 6F736A971B58370A00335122;
-					};
-				};
-			};
-			buildConfigurationList = 6F736A931B58370A00335122 /* Build configuration list for PBXProject "FUZCacher" */;
-			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
-			hasScannedForEncodings = 0;
-			knownRegions = (
-				en,
-				Base,
-			);
-			mainGroup = 6F736A8F1B58370A00335122;
-			productRefGroup = 6F736A991B58370A00335122 /* Products */;
-			projectDirPath = "";
-			projectRoot = "";
-			targets = (
-				6F736A971B58370A00335122 /* FUZCacher */,
-				6F736AB01B58370A00335122 /* FUZCacherTests */,
-			);
-		};
-/* End PBXProject section */
-
-/* Begin PBXResourcesBuildPhase section */
-		6F736A961B58370A00335122 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6F736AA71B58370A00335122 /* Main.storyboard in Resources */,
-				6F736AAC1B58370A00335122 /* LaunchScreen.xib in Resources */,
-				6F736AA91B58370A00335122 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6F736AAF1B58370A00335122 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		49495BB73AA80E6C9FBD3978 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		8F0974F10993C38CCB791ABC /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FUZCacherTests/Pods-FUZCacherTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E08A1202F9CF3D3E95058C14 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E244D931847460154D90A284 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
-/* Begin PBXSourcesBuildPhase section */
-		6F736A941B58370A00335122 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6F736AA11B58370A00335122 /* FUZAppDelegate.m in Sources */,
-				6F49BB001B5C1C5D007B9DF4 /* FUZMP4LoaderDelegate.m in Sources */,
-				6F09BC5B1B5AAABB000B57F2 /* NSDictionary+FUZHTTPHeaders.m in Sources */,
-				6F09BC5E1B5AAFC7000B57F2 /* FUZFileHandle.m in Sources */,
-				6F09BC4F1B5A5FB2000B57F2 /* NSURL+FUZScheme.m in Sources */,
-				6F4796F71B5B917800340B80 /* FUZCache.m in Sources */,
-				6F49BB091B5C28ED007B9DF4 /* FUZPartialLoadingRequest.m in Sources */,
-				6FE8E1611B59938200B25498 /* FUZCacheEntity.m in Sources */,
-				6F736AC61B583CA600335122 /* FUZPlayerViewController.m in Sources */,
-				6F09BC4C1B5A5C82000B57F2 /* FUZLoadingOperation.m in Sources */,
-				6F49BAFA1B5C0EB4007B9DF4 /* FUZPlayerView.m in Sources */,
-				6F736ACB1B583FD900335122 /* FUZRemoteVideoPlayer.m in Sources */,
-				6F736A9E1B58370A00335122 /* main.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6F736AAD1B58370A00335122 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6F49BAF51B5C041C007B9DF4 /* NSDIctionary+FUZHTTPHeadersSpec.m in Sources */,
-				6F09BC511B5A6026000B57F2 /* NSURL+FUZSchemeSpec.m in Sources */,
-				6F49BAF71B5C092D007B9DF4 /* FUZFileHandleSpec.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		6F736AB31B58370A00335122 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 6F736A971B58370A00335122 /* FUZCacher */;
-			targetProxy = 6F736AB21B58370A00335122 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		6F736AA51B58370A00335122 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6F736AA61B58370A00335122 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		6F736AAA1B58370A00335122 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6F736AAB1B58370A00335122 /* Base */,
-			);
-			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
-/* Begin XCBuildConfiguration section */
-		6F736AB91B58370B00335122 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
-			};
-			name = Debug;
-		};
-		6F736ABA1B58370B00335122 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		6F736ABC1B58370B00335122 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5487D24C3DA1B4A3EBDB5698 /* Pods.debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Eugene Altynpara (CAP4W55C8H)";
-				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = FUZCacher/PrefixHeader.pch;
-				INFOPLIST_FILE = FUZCacher/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0e4a4457-bc02-4f4e-8238-1f17aaedafaf";
-			};
-			name = Debug;
-		};
-		6F736ABD1B58370B00335122 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7069A2EAF5E7B2CF00BB87B4 /* Pods.release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
-				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = FUZCacher/PrefixHeader.pch;
-				INFOPLIST_FILE = FUZCacher/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		6F736ABF1B58370B00335122 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2930ABD5418F15C77B0EE007 /* Pods-FUZCacherTests.debug.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREFIX_HEADER = "FUZCacherTests/PrefixHeader-Tests.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = FUZCacherTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FUZCacher.app/FUZCacher";
-			};
-			name = Debug;
-		};
-		6F736AC01B58370B00335122 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = AF5F4AA1278F4986CD603831 /* Pods-FUZCacherTests.release.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREFIX_HEADER = "FUZCacherTests/PrefixHeader-Tests.pch";
-				INFOPLIST_FILE = FUZCacherTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FUZCacher.app/FUZCacher";
-			};
-			name = Release;
-		};
-/* End XCBuildConfiguration section */
-
-/* Begin XCConfigurationList section */
-		6F736A931B58370A00335122 /* Build configuration list for PBXProject "FUZCacher" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6F736AB91B58370B00335122 /* Debug */,
-				6F736ABA1B58370B00335122 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		6F736ABB1B58370B00335122 /* Build configuration list for PBXNativeTarget "FUZCacher" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6F736ABC1B58370B00335122 /* Debug */,
-				6F736ABD1B58370B00335122 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		6F736ABE1B58370B00335122 /* Build configuration list for PBXNativeTarget "FUZCacherTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6F736ABF1B58370B00335122 /* Debug */,
-				6F736AC01B58370B00335122 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-/* End XCConfigurationList section */
-	};
-	rootObject = 6F736A901B58370A00335122 /* Project object */;
-}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>archiveVersion</key>
+	<string>1</string>
+	<key>classes</key>
+	<dict/>
+	<key>objectVersion</key>
+	<string>46</string>
+	<key>objects</key>
+	<dict>
+		<key>285A53A59E7FECB6032C902C</key>
+		<dict>
+			<key>fileRef</key>
+			<string>BA60DDAE4E07503515EEC456</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>2930ABD5418F15C77B0EE007</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods-FUZCacherTests.debug.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods-FUZCacherTests/Pods-FUZCacherTests.debug.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>318D2BA96B3E0E1FF002EA9E</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>6F736AC71B583D4C00335122</string>
+				<string>4836D7959B1A8EB5276FF553</string>
+				<string>BA60DDAE4E07503515EEC456</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Frameworks</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>4836D7959B1A8EB5276FF553</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>archive.ar</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>libPods-FUZCacherTests.a</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>49495BB73AA80E6C9FBD3978</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>Check Pods Manifest.lock</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
+if [[ $? != 0 ]] ; then
+    cat &lt;&lt; EOM
+error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
+EOM
+    exit 1
+fi
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>5487D24C3DA1B4A3EBDB5698</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods.debug.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods/Pods.debug.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F09BC4A1B5A5C82000B57F2</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FUZLoadingOperation.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F09BC4B1B5A5C82000B57F2</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>FUZLoadingOperation.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F09BC4C1B5A5C82000B57F2</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6F09BC4B1B5A5C82000B57F2</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>6F09BC4D1B5A5FB2000B57F2</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>NSURL+FUZScheme.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F09BC4E1B5A5FB2000B57F2</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>NSURL+FUZScheme.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F09BC4F1B5A5FB2000B57F2</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6F09BC4E1B5A5FB2000B57F2</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>6F09BC501B5A6026000B57F2</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>NSURL+FUZSchemeSpec.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F09BC511B5A6026000B57F2</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6F09BC501B5A6026000B57F2</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>6F09BC521B5A61EC000B57F2</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>6F09BC4D1B5A5FB2000B57F2</string>
+				<string>6F09BC4E1B5A5FB2000B57F2</string>
+				<string>6F09BC591B5AAABB000B57F2</string>
+				<string>6F09BC5A1B5AAABB000B57F2</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Utils</string>
+			<key>path</key>
+			<string>Utils</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F09BC591B5AAABB000B57F2</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>NSDictionary+FUZHTTPHeaders.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F09BC5A1B5AAABB000B57F2</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>NSDictionary+FUZHTTPHeaders.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F09BC5B1B5AAABB000B57F2</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6F09BC5A1B5AAABB000B57F2</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>6F09BC5C1B5AAFC7000B57F2</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FUZFileHandle.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F09BC5D1B5AAFC7000B57F2</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>FUZFileHandle.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F09BC5E1B5AAFC7000B57F2</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6F09BC5D1B5AAFC7000B57F2</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>6F09BC5F1B5AB7A9000B57F2</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>6F736AC91B583FD900335122</string>
+				<string>6F736ACA1B583FD900335122</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Player</string>
+			<key>path</key>
+			<string>Player</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F0ABCE41B5B124D0029D242</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>PrefixHeader.pch</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F4796F41B5B8E8900340B80</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>PrefixHeader-Tests.pch</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F4796F51B5B917800340B80</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FUZCacheRepository.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F4796F61B5B917800340B80</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>FUZCacheRepository.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F4796F71B5B917800340B80</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6F4796F61B5B917800340B80</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>6F49BAF41B5C041C007B9DF4</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>NSDIctionary+FUZHTTPHeadersSpec.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F49BAF51B5C041C007B9DF4</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6F49BAF41B5C041C007B9DF4</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>6F49BAF61B5C092D007B9DF4</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>FUZFileHandleSpec.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F49BAF71B5C092D007B9DF4</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6F49BAF61B5C092D007B9DF4</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>6F49BAF81B5C0EB4007B9DF4</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FUZPlayerView.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F49BAF91B5C0EB4007B9DF4</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>FUZPlayerView.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F49BAFA1B5C0EB4007B9DF4</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6F49BAF91B5C0EB4007B9DF4</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>6F49BAFB1B5C1C10007B9DF4</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>6F736AC41B583CA600335122</string>
+				<string>6F736AC51B583CA600335122</string>
+				<string>6F49BAF81B5C0EB4007B9DF4</string>
+				<string>6F49BAF91B5C0EB4007B9DF4</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>UI</string>
+			<key>path</key>
+			<string>UI</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F49BAFC1B5C1C27007B9DF4</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>6F736AA51B58370A00335122</string>
+				<string>6F736AA81B58370A00335122</string>
+				<string>6F736AAA1B58370A00335122</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Resources</string>
+			<key>path</key>
+			<string>Resources</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F49BAFE1B5C1C5D007B9DF4</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FUZMP4LoaderDelegate.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F49BAFF1B5C1C5D007B9DF4</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>FUZMP4LoaderDelegate.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F49BB001B5C1C5D007B9DF4</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6F49BAFF1B5C1C5D007B9DF4</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>6F49BB071B5C28ED007B9DF4</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FUZPartialLoadingRequest.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F49BB081B5C28ED007B9DF4</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>FUZPartialLoadingRequest.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F49BB091B5C28ED007B9DF4</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6F49BB081B5C28ED007B9DF4</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>6F736A8F1B58370A00335122</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>6F736A9A1B58370A00335122</string>
+				<string>6F736AB41B58370A00335122</string>
+				<string>6F736A991B58370A00335122</string>
+				<string>B676DD4A68E97E7A07C9D2C6</string>
+				<string>318D2BA96B3E0E1FF002EA9E</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F736A901B58370A00335122</key>
+		<dict>
+			<key>attributes</key>
+			<dict>
+				<key>CLASSPREFIX</key>
+				<string>FUZ</string>
+				<key>LastUpgradeCheck</key>
+				<string>0630</string>
+				<key>ORGANIZATIONNAME</key>
+				<string>fuzza</string>
+				<key>TargetAttributes</key>
+				<dict>
+					<key>6F736A971B58370A00335122</key>
+					<dict>
+						<key>CreatedOnToolsVersion</key>
+						<string>6.3.1</string>
+					</dict>
+					<key>6F736AB01B58370A00335122</key>
+					<dict>
+						<key>CreatedOnToolsVersion</key>
+						<string>6.3.1</string>
+						<key>TestTargetID</key>
+						<string>6F736A971B58370A00335122</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>buildConfigurationList</key>
+			<string>6F736A931B58370A00335122</string>
+			<key>compatibilityVersion</key>
+			<string>Xcode 3.2</string>
+			<key>developmentRegion</key>
+			<string>English</string>
+			<key>hasScannedForEncodings</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXProject</string>
+			<key>knownRegions</key>
+			<array>
+				<string>en</string>
+				<string>Base</string>
+			</array>
+			<key>mainGroup</key>
+			<string>6F736A8F1B58370A00335122</string>
+			<key>productRefGroup</key>
+			<string>6F736A991B58370A00335122</string>
+			<key>projectDirPath</key>
+			<string></string>
+			<key>projectReferences</key>
+			<array/>
+			<key>projectRoot</key>
+			<string></string>
+			<key>targets</key>
+			<array>
+				<string>6F736A971B58370A00335122</string>
+				<string>6F736AB01B58370A00335122</string>
+			</array>
+		</dict>
+		<key>6F736A931B58370A00335122</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>6F736AB91B58370B00335122</string>
+				<string>6F736ABA1B58370B00335122</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>6F736A941B58370A00335122</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>6F736AA11B58370A00335122</string>
+				<string>6F49BB001B5C1C5D007B9DF4</string>
+				<string>6F09BC5B1B5AAABB000B57F2</string>
+				<string>6F09BC5E1B5AAFC7000B57F2</string>
+				<string>6F09BC4F1B5A5FB2000B57F2</string>
+				<string>6F4796F71B5B917800340B80</string>
+				<string>6F49BB091B5C28ED007B9DF4</string>
+				<string>6FE8E1611B59938200B25498</string>
+				<string>6F736AC61B583CA600335122</string>
+				<string>6F09BC4C1B5A5C82000B57F2</string>
+				<string>6F49BAFA1B5C0EB4007B9DF4</string>
+				<string>6F736ACB1B583FD900335122</string>
+				<string>6F736A9E1B58370A00335122</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>6F736A951B58370A00335122</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>6F736AC81B583D4C00335122</string>
+				<string>285A53A59E7FECB6032C902C</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>6F736A961B58370A00335122</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>6F736AA71B58370A00335122</string>
+				<string>6F736AAC1B58370A00335122</string>
+				<string>6F736AA91B58370A00335122</string>
+			</array>
+			<key>isa</key>
+			<string>PBXResourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>6F736A971B58370A00335122</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>6F736ABB1B58370B00335122</string>
+			<key>buildPhases</key>
+			<array>
+				<string>49495BB73AA80E6C9FBD3978</string>
+				<string>6F736A941B58370A00335122</string>
+				<string>6F736A951B58370A00335122</string>
+				<string>6F736A961B58370A00335122</string>
+				<string>E08A1202F9CF3D3E95058C14</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>FUZCacher</string>
+			<key>productName</key>
+			<string>FUZCacher</string>
+			<key>productReference</key>
+			<string>6F736A981B58370A00335122</string>
+			<key>productType</key>
+			<string>com.apple.product-type.application</string>
+		</dict>
+		<key>6F736A981B58370A00335122</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.application</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>FUZCacher.app</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>6F736A991B58370A00335122</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>6F736A981B58370A00335122</string>
+				<string>6F736AB11B58370A00335122</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Products</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F736A9A1B58370A00335122</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>CCE2FD241B5CDD87007D0FA7</string>
+				<string>6F49BAFC1B5C1C27007B9DF4</string>
+				<string>6F49BAFB1B5C1C10007B9DF4</string>
+				<string>6F09BC521B5A61EC000B57F2</string>
+				<string>6F736A9F1B58370A00335122</string>
+				<string>6F736AA01B58370A00335122</string>
+				<string>6F736A9B1B58370A00335122</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>FUZCacher</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F736A9B1B58370A00335122</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>6F736A9C1B58370A00335122</string>
+				<string>6F736A9D1B58370A00335122</string>
+				<string>6F0ABCE41B5B124D0029D242</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Supporting Files</string>
+			<key>path</key>
+			<string>Supporting Files</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F736A9C1B58370A00335122</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F736A9D1B58370A00335122</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>main.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F736A9E1B58370A00335122</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6F736A9D1B58370A00335122</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>6F736A9F1B58370A00335122</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FUZAppDelegate.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F736AA01B58370A00335122</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>FUZAppDelegate.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F736AA11B58370A00335122</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6F736AA01B58370A00335122</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>6F736AA51B58370A00335122</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>6F736AA61B58370A00335122</string>
+			</array>
+			<key>isa</key>
+			<string>PBXVariantGroup</string>
+			<key>name</key>
+			<string>Main.storyboard</string>
+			<key>path</key>
+			<string>.</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F736AA61B58370A00335122</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.storyboard</string>
+			<key>name</key>
+			<string>Base</string>
+			<key>path</key>
+			<string>Base.lproj/Main.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F736AA71B58370A00335122</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6F736AA51B58370A00335122</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>6F736AA81B58370A00335122</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>folder.assetcatalog</string>
+			<key>path</key>
+			<string>Images.xcassets</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F736AA91B58370A00335122</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6F736AA81B58370A00335122</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>6F736AAA1B58370A00335122</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>6F736AAB1B58370A00335122</string>
+			</array>
+			<key>isa</key>
+			<string>PBXVariantGroup</string>
+			<key>name</key>
+			<string>LaunchScreen.xib</string>
+			<key>path</key>
+			<string>.</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F736AAB1B58370A00335122</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.xib</string>
+			<key>name</key>
+			<string>Base</string>
+			<key>path</key>
+			<string>Base.lproj/LaunchScreen.xib</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F736AAC1B58370A00335122</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6F736AAA1B58370A00335122</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>6F736AAD1B58370A00335122</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>6F49BAF51B5C041C007B9DF4</string>
+				<string>6F09BC511B5A6026000B57F2</string>
+				<string>6F49BAF71B5C092D007B9DF4</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>6F736AAE1B58370A00335122</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>C1DD82F471D7E04D909057CB</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>6F736AAF1B58370A00335122</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXResourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>6F736AB01B58370A00335122</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>6F736ABE1B58370B00335122</string>
+			<key>buildPhases</key>
+			<array>
+				<string>E244D931847460154D90A284</string>
+				<string>6F736AAD1B58370A00335122</string>
+				<string>6F736AAE1B58370A00335122</string>
+				<string>6F736AAF1B58370A00335122</string>
+				<string>8F0974F10993C38CCB791ABC</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array>
+				<string>6F736AB31B58370A00335122</string>
+			</array>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>FUZCacherTests</string>
+			<key>productName</key>
+			<string>FUZCacherTests</string>
+			<key>productReference</key>
+			<string>6F736AB11B58370A00335122</string>
+			<key>productType</key>
+			<string>com.apple.product-type.bundle.unit-test</string>
+		</dict>
+		<key>6F736AB11B58370A00335122</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.cfbundle</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>FUZCacherTests.xctest</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>6F736AB21B58370A00335122</key>
+		<dict>
+			<key>containerPortal</key>
+			<string>6F736A901B58370A00335122</string>
+			<key>isa</key>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>1</string>
+			<key>remoteGlobalIDString</key>
+			<string>6F736A971B58370A00335122</string>
+			<key>remoteInfo</key>
+			<string>FUZCacher</string>
+		</dict>
+		<key>6F736AB31B58370A00335122</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXTargetDependency</string>
+			<key>target</key>
+			<string>6F736A971B58370A00335122</string>
+			<key>targetProxy</key>
+			<string>6F736AB21B58370A00335122</string>
+		</dict>
+		<key>6F736AB41B58370A00335122</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>6F736AB51B58370B00335122</string>
+				<string>6F09BC501B5A6026000B57F2</string>
+				<string>6F49BAF41B5C041C007B9DF4</string>
+				<string>6F49BAF61B5C092D007B9DF4</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>FUZCacherTests</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F736AB51B58370B00335122</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>6F736AB61B58370B00335122</string>
+				<string>6F4796F41B5B8E8900340B80</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Supporting Files</string>
+			<key>path</key>
+			<string>Supporting Files</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F736AB61B58370B00335122</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F736AB91B58370B00335122</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>CLANG_WARN_BOOL_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_UNREACHABLE_CODE</key>
+				<string>YES</string>
+				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
+				<string>YES</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>NO</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf-with-dsym</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_DYNAMIC_NO_PIC</key>
+				<string>NO</string>
+				<key>GCC_NO_COMMON_BLOCKS</key>
+				<string>YES</string>
+				<key>GCC_OPTIMIZATION_LEVEL</key>
+				<string>0</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>DEBUG=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
+				<string>NO</string>
+				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
+				<string>YES</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES_ERROR</string>
+				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES_AGGRESSIVE</string>
+				<key>GCC_WARN_UNUSED_FUNCTION</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.3</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>YES</string>
+				<key>ONLY_ACTIVE_ARCH</key>
+				<string>YES</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>6F736ABA1B58370B00335122</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>CLANG_WARN_BOOL_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_UNREACHABLE_CODE</key>
+				<string>YES</string>
+				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
+				<string>YES</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>NO</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf-with-dsym</string>
+				<key>ENABLE_NS_ASSERTIONS</key>
+				<string>NO</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_NO_COMMON_BLOCKS</key>
+				<string>YES</string>
+				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
+				<string>YES</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES_ERROR</string>
+				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES_AGGRESSIVE</string>
+				<key>GCC_WARN_UNUSED_FUNCTION</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.3</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>NO</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>VALIDATE_PRODUCT</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>6F736ABB1B58370B00335122</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>6F736ABC1B58370B00335122</string>
+				<string>6F736ABD1B58370B00335122</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>6F736ABC1B58370B00335122</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>5487D24C3DA1B4A3EBDB5698</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
+				<string>AppIcon</string>
+				<key>CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES</key>
+				<string>NO</string>
+				<key>CODE_SIGN_IDENTITY</key>
+				<string>iPhone Developer: Eugene Altynpara (CAP4W55C8H)</string>
+				<key>GCC_INCREASE_PRECOMPILED_HEADER_SHARING</key>
+				<string>YES</string>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>FUZCacher/Supporting Files/PrefixHeader.pch</string>
+				<key>INFOPLIST_FILE</key>
+				<string>FUZCacher/Supporting Files/Info.plist</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>7.0</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>PROVISIONING_PROFILE</key>
+				<string>0e4a4457-bc02-4f4e-8238-1f17aaedafaf</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>6F736ABD1B58370B00335122</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>7069A2EAF5E7B2CF00BB87B4</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
+				<string>AppIcon</string>
+				<key>CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES</key>
+				<string>NO</string>
+				<key>GCC_INCREASE_PRECOMPILED_HEADER_SHARING</key>
+				<string>YES</string>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>FUZCacher/Supporting Files/PrefixHeader.pch</string>
+				<key>INFOPLIST_FILE</key>
+				<string>FUZCacher/Supporting Files/Info.plist</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>7.0</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>6F736ABE1B58370B00335122</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>6F736ABF1B58370B00335122</string>
+				<string>6F736AC01B58370B00335122</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>6F736ABF1B58370B00335122</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>2930ABD5418F15C77B0EE007</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>BUNDLE_LOADER</key>
+				<string>$(TEST_HOST)</string>
+				<key>FRAMEWORK_SEARCH_PATHS</key>
+				<array>
+					<string>$(SDKROOT)/Developer/Library/Frameworks</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>FUZCacherTests/Supporting Files/PrefixHeader-Tests.pch</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>DEBUG=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>INFOPLIST_FILE</key>
+				<string>FUZCacherTests/Supporting Files/Info.plist</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks @loader_path/Frameworks</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>TEST_HOST</key>
+				<string>$(BUILT_PRODUCTS_DIR)/FUZCacher.app/FUZCacher</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>6F736AC01B58370B00335122</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>AF5F4AA1278F4986CD603831</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>BUNDLE_LOADER</key>
+				<string>$(TEST_HOST)</string>
+				<key>FRAMEWORK_SEARCH_PATHS</key>
+				<array>
+					<string>$(SDKROOT)/Developer/Library/Frameworks</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>FUZCacherTests/Supporting Files/PrefixHeader-Tests.pch</string>
+				<key>INFOPLIST_FILE</key>
+				<string>FUZCacherTests/Supporting Files/Info.plist</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks @loader_path/Frameworks</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>TEST_HOST</key>
+				<string>$(BUILT_PRODUCTS_DIR)/FUZCacher.app/FUZCacher</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>6F736AC41B583CA600335122</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FUZPlayerViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F736AC51B583CA600335122</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>FUZPlayerViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F736AC61B583CA600335122</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6F736AC51B583CA600335122</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>6F736AC71B583D4C00335122</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>AVFoundation.framework</string>
+			<key>path</key>
+			<string>System/Library/Frameworks/AVFoundation.framework</string>
+			<key>sourceTree</key>
+			<string>SDKROOT</string>
+		</dict>
+		<key>6F736AC81B583D4C00335122</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6F736AC71B583D4C00335122</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>6F736AC91B583FD900335122</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FUZRemoteVideoPlayer.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F736ACA1B583FD900335122</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>FUZRemoteVideoPlayer.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6F736ACB1B583FD900335122</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6F736ACA1B583FD900335122</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>6FE8E15F1B59938200B25498</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>FUZCacheEntity.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6FE8E1601B59938200B25498</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>FUZCacheEntity.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6FE8E1611B59938200B25498</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6FE8E1601B59938200B25498</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>7069A2EAF5E7B2CF00BB87B4</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods.release.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods/Pods.release.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F0974F10993C38CCB791ABC</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>Copy Pods Resources</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Target Support Files/Pods-FUZCacherTests/Pods-FUZCacherTests-resources.sh"
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>AF5F4AA1278F4986CD603831</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>name</key>
+			<string>Pods-FUZCacherTests.release.xcconfig</string>
+			<key>path</key>
+			<string>Pods/Target Support Files/Pods-FUZCacherTests/Pods-FUZCacherTests.release.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>B676DD4A68E97E7A07C9D2C6</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>2930ABD5418F15C77B0EE007</string>
+				<string>AF5F4AA1278F4986CD603831</string>
+				<string>5487D24C3DA1B4A3EBDB5698</string>
+				<string>7069A2EAF5E7B2CF00BB87B4</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Pods</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BA60DDAE4E07503515EEC456</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>archive.ar</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>libPods.a</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>C1DD82F471D7E04D909057CB</key>
+		<dict>
+			<key>fileRef</key>
+			<string>4836D7959B1A8EB5276FF553</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>CCE2FD221B5CDD47007D0FA7</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>6F09BC5C1B5AAFC7000B57F2</string>
+				<string>6F09BC5D1B5AAFC7000B57F2</string>
+				<string>6F4796F51B5B917800340B80</string>
+				<string>6F4796F61B5B917800340B80</string>
+				<string>6FE8E15F1B59938200B25498</string>
+				<string>6FE8E1601B59938200B25498</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>CacheEngine</string>
+			<key>path</key>
+			<string>CacheEngine</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CCE2FD231B5CDD78007D0FA7</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>6F49BAFE1B5C1C5D007B9DF4</string>
+				<string>6F49BAFF1B5C1C5D007B9DF4</string>
+				<string>6F09BC4A1B5A5C82000B57F2</string>
+				<string>6F09BC4B1B5A5C82000B57F2</string>
+				<string>6F49BB071B5C28ED007B9DF4</string>
+				<string>6F49BB081B5C28ED007B9DF4</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Loader</string>
+			<key>path</key>
+			<string>Loader</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CCE2FD241B5CDD87007D0FA7</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>6F09BC5F1B5AB7A9000B57F2</string>
+				<string>CCE2FD221B5CDD47007D0FA7</string>
+				<string>CCE2FD231B5CDD78007D0FA7</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Logic</string>
+			<key>path</key>
+			<string>Logic</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>E08A1202F9CF3D3E95058C14</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>Copy Pods Resources</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh"
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+		<key>E244D931847460154D90A284</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>inputPaths</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXShellScriptBuildPhase</string>
+			<key>name</key>
+			<string>Check Pods Manifest.lock</string>
+			<key>outputPaths</key>
+			<array/>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+			<key>shellPath</key>
+			<string>/bin/sh</string>
+			<key>shellScript</key>
+			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
+if [[ $? != 0 ]] ; then
+    cat &lt;&lt; EOM
+error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
+EOM
+    exit 1
+fi
+</string>
+			<key>showEnvVarsInLog</key>
+			<string>0</string>
+		</dict>
+	</dict>
+	<key>rootObject</key>
+	<string>6F736A901B58370A00335122</string>
+</dict>
+</plist>

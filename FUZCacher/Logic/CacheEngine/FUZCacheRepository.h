@@ -10,7 +10,7 @@
 
 @class FUZCacheEntity;
 
-@interface FUZCache : NSObject
+@interface FUZCacheRepository : NSObject
 
 - (BOOL)isCacheExistsForURL:(NSURL *)url;
 - (FUZCacheEntity *)cacheEntityForURL:(NSURL *)url;

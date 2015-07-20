@@ -6,16 +6,16 @@
 //  Copyright (c) 2015 fuzza. All rights reserved.
 //
 
-#import "FUZCache.h"
+#import "FUZCacheRepository.h"
 #import "FUZCacheEntity.h"
 
-@interface FUZCache ()
+@interface FUZCacheRepository ()
 
 @property (nonatomic, strong) NSMutableDictionary *cache;
 
 @end
 
-@implementation FUZCache
+@implementation FUZCacheRepository
 
 - (instancetype)init
 {

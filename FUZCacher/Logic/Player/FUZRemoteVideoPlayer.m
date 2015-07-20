@@ -9,13 +9,13 @@
 #import "FUZLoadingOperation.h"
 #import "NSURL+FUZScheme.h"
 #import "FUZMP4LoaderDelegate.h"
-#import "FUZCache.h"
+#import "FUZCacheRepository.h"
 
 NSString * const kPlaybackLikelyToKeepUpKey = @"playbackLikelyToKeepUp";
 
 @interface FUZRemoteVideoPlayer () <AVAssetResourceLoaderDelegate>
 
-@property (nonatomic, strong) FUZCache *playerCache;
+@property (nonatomic, strong) FUZCacheRepository *playerCache;
 @property (nonatomic, strong) AVPlayer *videoPlayer;
 @property (nonatomic, strong, readwrite) AVPlayerLayer *playerLayer;
 @property (nonatomic, strong, readonly) AVPlayerItem *currentItem;
@@ -33,7 +33,7 @@ NSString * const kPlaybackLikelyToKeepUpKey = @"playbackLikelyToKeepUp";
     self = [super init];
     if(self)
     {
-        self.playerCache = [[FUZCache alloc] init];
+        self.playerCache = [[FUZCacheRepository alloc] init];
         [self setupNSNotifications];
     }
     return self;
