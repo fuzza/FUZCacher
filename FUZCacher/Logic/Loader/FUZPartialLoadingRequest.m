@@ -61,7 +61,7 @@ NSString *const kFUZDefaultScheme = @"http";
     [self.loadingRequest finishLoading];
 }
 
-#pragma mark -
+#pragma mark - Stream position
 
 - (NSInteger)requiredOffset
 {
